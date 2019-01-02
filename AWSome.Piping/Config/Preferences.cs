@@ -17,7 +17,7 @@ namespace AWSome.Piping.Config
 
         public static string AWSProfileName { get; set; }
         public static RegionEndpoint RegionEndpoint { get; set; }
-        public static AWSCredentials UserAWSCredentials { get; private set; }
+        public static AWSCredentials UserAWSCredentials { get; set; }
         public static AmazonDataPipelineConfig PipelineConfig { get; set; }
         public static string PipelineId { get; set; }
 
@@ -66,7 +66,7 @@ namespace AWSome.Piping.Config
         /// Gets the Pipeline Client set in the App.config file
         /// </summary>
         /// <returns>The Pipeline Client as configured</returns>
-        public AmazonDataPipelineClient GetPipelineClient()
+        public static AmazonDataPipelineClient GetPipelineClient()
         {
             return new AmazonDataPipelineClient(UserAWSCredentials, RegionEndpoint.EUWest1);
         }
@@ -75,7 +75,7 @@ namespace AWSome.Piping.Config
         /// Gets the Pipeline Client set in the App.config file
         /// </summary>
         /// <returns>The Pipeline Client as configured</returns>
-        public AmazonDataPipelineClient GetPipelineClient(RegionEndpoint regionEndpoint)
+        public static AmazonDataPipelineClient GetPipelineClient(RegionEndpoint regionEndpoint)
         {
             return new AmazonDataPipelineClient(UserAWSCredentials, regionEndpoint);
         }
@@ -84,7 +84,7 @@ namespace AWSome.Piping.Config
         /// Gets the Pipeline Client set in the App.config file
         /// </summary>
         /// <returns>The Kinesis Pipeline as configured</returns>
-        public AmazonDataPipelineClient GetPipelineClient(AmazonDataPipelineConfig amazonDataPipelineConfig)
+        public static AmazonDataPipelineClient GetPipelineClient(AmazonDataPipelineConfig amazonDataPipelineConfig)
         {
             return new AmazonDataPipelineClient(UserAWSCredentials, amazonDataPipelineConfig);
         }

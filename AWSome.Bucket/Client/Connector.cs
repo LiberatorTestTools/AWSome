@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace AWSome.Bucket.Client
 {
@@ -36,8 +37,8 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Bucket listing has failed.");
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
-                    return null;
                 }
+                return null;
             }
         }
 
@@ -45,7 +46,7 @@ namespace AWSome.Bucket.Client
         /// Creates a new bucket on the client
         /// </summary>
         /// <param name="newBucketName">The name of the new bucket to create</param>
-        public void CreateS3Bucket(string newBucketName)
+        public PutBucketResponse CreateS3Bucket(string newBucketName)
         {
             using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
             {
@@ -56,7 +57,7 @@ namespace AWSome.Bucket.Client
                         BucketName = newBucketName
                     };
 
-                    PutBucketResponse putBucketResponse = s3Client.PutBucket(putBucketRequest);
+                    return s3Client.PutBucket(putBucketRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -64,6 +65,7 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
                 }
+                return null;
             }
         }
 
@@ -72,7 +74,7 @@ namespace AWSome.Bucket.Client
         /// </summary>
         /// <param name="bucketName">The name of the bucket</param>
         /// <param name="folderName">The name of the new folder to create</param>
-        public void CreateFolder(string bucketName, string folderName)
+        public PutObjectResponse CreateFolder(string bucketName, string folderName)
         {
             string delimiter = "/";
             string folderKey = string.Concat(folderName, delimiter);
@@ -88,7 +90,7 @@ namespace AWSome.Bucket.Client
                         InputStream = new MemoryStream(new byte[0])
                     };
 
-                    PutObjectResponse folderResponse = s3Client.PutObject(folderRequest);
+                    return s3Client.PutObject(folderRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -96,6 +98,7 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
                 }
+                return null;
             }
         }
 
@@ -137,7 +140,7 @@ namespace AWSome.Bucket.Client
         /// </summary>
         /// <param name="bucketName">The name of the bucket</param>
         /// <param name="filePath">The path to the file to upload</param>
-        public void PutFileInS3Bucket(string bucketName, string filePath)
+        public PutObjectResponse PutFileInS3Bucket(string bucketName, string filePath)
         {
             FileInfo filename = new FileInfo(filePath);
             string contents = File.ReadAllText(filename.FullName);
@@ -155,7 +158,7 @@ namespace AWSome.Bucket.Client
 
                     putObjectRequest.Metadata.Add("type", "log");
 
-                    PutObjectResponse putObjectResponse = s3Client.PutObject(putObjectRequest);
+                    return s3Client.PutObject(putObjectRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -163,6 +166,7 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
                 }
+                return null;
             }
         }
 
@@ -236,9 +240,8 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Object listing has failed.");
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
-                    return null;
                 }
-
+                return null;
             }
         }
 
@@ -248,7 +251,7 @@ namespace AWSome.Bucket.Client
         /// <param name="bucketName">The name of the bucket containing the folder</param>
         /// <param name="folderName">The name of the folder to upload to</param>
         /// <param name="filePath">The local oath to the file being uploaded</param>
-        public void AddFileToS3Folder(string bucketName, string folderName, string filePath)
+        public PutObjectResponse AddFileToS3Folder(string bucketName, string folderName, string filePath)
         {
             string delimiter = "/";
             FileInfo filename = new FileInfo(filePath);
@@ -264,7 +267,7 @@ namespace AWSome.Bucket.Client
                         BucketName = string.Concat(bucketName, delimiter, folderName),
                         Key = filename.Name
                     };
-                    PutObjectResponse putObjectResponse = s3Client.PutObject(putObjectRequest);
+                    return s3Client.PutObject(putObjectRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -272,6 +275,7 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
                 }
+                return null;
             }
         }
 
@@ -280,7 +284,7 @@ namespace AWSome.Bucket.Client
         /// </summary>
         /// <param name="bucketName">The name of the bucket containing the item</param>
         /// <param name="filePath">The path to the file to be deleted</param>
-        public void DeleteItemFromS3Bucket(string bucketName, string filePath)
+        public DeleteObjectResponse DeleteItemFromS3Bucket(string bucketName, string filePath)
         {
             using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
             {
@@ -292,7 +296,7 @@ namespace AWSome.Bucket.Client
                         Key = filePath
                     };
 
-                    DeleteObjectResponse deleteObjectResponse = s3Client.DeleteObject(deleteObjectRequest);
+                    return s3Client.DeleteObject(deleteObjectRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -300,6 +304,7 @@ namespace AWSome.Bucket.Client
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
                 }
+                return null;
             }
         }
 
@@ -309,7 +314,7 @@ namespace AWSome.Bucket.Client
         /// <param name="bucketName">The name of the bucket containing the folder</param>
         /// <param name="folderName">The path of the folder</param>
         /// <param name="subFolder">The name of the subfolder to delete</param>
-        public void DeleteSubFolderFromS3Bucket(string bucketName, string folderName, string subFolder)
+        public DeleteObjectResponse DeleteSubFolderFromS3Bucket(string bucketName, string folderName, string subFolder)
         {
             string delimiter = "/";
             using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
@@ -321,13 +326,36 @@ namespace AWSome.Bucket.Client
                         BucketName = bucketName,
                         Key = string.Concat(folderName, delimiter, subFolder, delimiter)
                     };
-                    DeleteObjectResponse deleteObjectResponse = s3Client.DeleteObject(deleteFolderRequest);
+                    return s3Client.DeleteObject(deleteFolderRequest);
                 }
                 catch (AmazonS3Exception e)
                 {
                     Console.WriteLine("Folder deletion has failed.");
                     Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(e.ErrorCode) ? "None" : e.ErrorCode);
                     Console.WriteLine("Exception message: {0}", e.Message);
+                }
+                return null;
+            }
+        }
+
+        public AbortMultipartUploadResponse AbortMultipartUploadRequest(string bucketName, [Optional]string uploadId, [Optional]string key, [Optional] string requestPayer)
+        {
+            using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
+            {
+                try
+                {
+                    AbortMultipartUploadRequest abortMultipartUploadRequest = new AbortMultipartUploadRequest
+                    {
+                        BucketName = bucketName ?? null,
+                        UploadId = uploadId ?? null,
+                        Key = key ?? null,
+                        RequestPayer = requestPayer ?? null
+                    };
+                    return s3Client.AbortMultipartUpload(abortMultipartUploadRequest);
+                }
+                catch (AmazonS3Exception e)
+                {
+                    throw new BucketException("Unable to abort multipart upload request.", e);
                 }
             }
         }
