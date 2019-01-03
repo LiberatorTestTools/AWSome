@@ -99,7 +99,7 @@ namespace AWSome.Bucket.Client
             {
                 using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
                 {
-                    PutBucketRequest putBucketRequest = PopulatePutBucketRequest(newBucketName, s3Region, bucketRegionName, s3CannedACL, s3Grants);
+                    PutBucketRequest putBucketRequest = PopulatePutBucketRequest(newBucketName, s3Region, s3CannedACL, s3Grants);
                     return s3Client.PutBucket(putBucketRequest);
                 }
             }
