@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bucket\BucketMoqs.cs" />
     <Compile Include="Piping\PipelineMoqs.cs" />
     <Compile Include="Piping\PipelineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,7 +109,6 @@
     <Analyzer Include="..\packages\AWSSDK.S3.3.3.31.5\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Bucket\" />
     <Folder Include="Dynamite\" />
     <Folder Include="Messages\" />
   </ItemGroup>

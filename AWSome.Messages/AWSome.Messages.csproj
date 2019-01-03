@@ -57,7 +57,7 @@
     <Compile Include="Config\Preferences.cs" />
     <Compile Include="Objects\MessageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transactions\Receiver.cs" />
+    <Compile Include="Transactions\KinesisReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.Kinesis.3.3.6.31\analyzers\dotnet\cs\AWSSDK.Kinesis.CodeAnalysis.dll" />

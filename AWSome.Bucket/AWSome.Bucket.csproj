@@ -54,7 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\Connector.cs" />
+    <Compile Include="Client\ConnectionPopulators.cs" />
+    <Compile Include="Client\ConnectorMethods.cs" />
     <Compile Include="Config\BucketException.cs" />
     <Compile Include="Config\Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
