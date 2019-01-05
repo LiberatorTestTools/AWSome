@@ -8,9 +8,9 @@ using System.Configuration;
 
 namespace AWSome.Dynamite.Config
 {
-    public class Preferences
+    public static class Preferences
     {
-        public NameValueCollection appSettings = ConfigurationManager.AppSettings;
+        public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
         public static AWSCredentials UserAWSCredentials { get; set; }
         public static RegionEndpoint RegionEndpoint { get; set; }
@@ -24,28 +24,14 @@ namespace AWSome.Dynamite.Config
         public static string KMSMasterKeyId { get; set; }
         public static SSEType SSEType { get; set; }
 
-        private static Preferences instance;
-        /// <summary>
-        /// Gets the Preferences singleton, populated from the app.config file.
-        /// </summary>
-        public static Preferences GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new Preferences();
-            }
-
-            return instance;
-        }
-
         /// <summary>
         /// Sets the Preferences based on the configuration file
         /// </summary>
-        private Preferences()
+        static Preferences()
         {
             bool.TryParse(appSettings.Get("StreamEnabled"), out bool streamEnabled);
-            bool.TryParse(appSettings.Get(""), out bool sseEnabled);
-
+            bool.TryParse(appSettings.Get("SseEnabled"), out bool sseEnabled);
+             
             RegionEndpoint = RegionEndpoint.GetBySystemName(appSettings.Get("RegionEndpoint"));
 
             AWSProfileName = appSettings.Get("AWSProfileName");
@@ -65,12 +51,12 @@ namespace AWSome.Dynamite.Config
         /// Gets the DynamoDB Client set in the App.config file
         /// </summary>
         /// <returns>The Dynamo DB Client as configured</returns>
-        public IAmazonDynamoDB GetDynamoDbClient()
+        public static IAmazonDynamoDB GetDynamoDbClient()
         {
             return new AmazonDynamoDBClient(UserAWSCredentials, RegionEndpoint);
         }
 
-        private AWSCredentials GetAWSCredentials()
+        private static AWSCredentials GetAWSCredentials()
         {
             CredentialProfileStoreChain profileStoreChain = new CredentialProfileStoreChain();
             if (!profileStoreChain.TryGetAWSCredentials(AWSProfileName, out AWSCredentials awsCredentials))
