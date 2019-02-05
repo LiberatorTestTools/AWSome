@@ -14,10 +14,11 @@ namespace AWSome.Dynamite.Client
     public class DynamoService<TObject> : Service
         where TObject : TableObject
     {
-
+        /// <summary>
+        /// Instance of the Service objecvt
+        /// </summary>
         public TObject ObjectReference { get; set; }
-
-
+        
 
         ///<summary>
         ///Validates that the table can be accessed via the connection
@@ -38,7 +39,7 @@ namespace AWSome.Dynamite.Client
         public void AddRow(string tableName, TObject objectReference)
         {
             ObjectReference = objectReference;
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 Table table = Table.LoadTable(client, tableName);
                 table.PutItem(ObjectReference.GetDocument());
@@ -53,7 +54,7 @@ namespace AWSome.Dynamite.Client
         public void UpdateRecord(string tableName, TObject objectReference)
         {
             ObjectReference = objectReference;
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 Table table = Table.LoadTable(client, tableName);
 
@@ -66,14 +67,14 @@ namespace AWSome.Dynamite.Client
         /// <param name="tableName">The name of the table to retrieve</param>
         /// <param name="filter">The query or scan filter to be used to return objects with certain filters</param>
         /// <returns>A collection of row based objects which represent the data in the table</returns>
-        public List<TObject> GetRecords(string tableName, [Optional, DefaultParameterValue(null)] Filter filter)
+        public List<TObject> GetRecords(string tableName, [Optional, DefaultParameterValue(null)]Filter filter)
         {
             List<Document> documents = new List<Document>();
             List<TObject> objects = new List<TObject>();
             Filter recordFilter = filter;
             Search search = null;
 
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 Table table = Table.LoadTable(client, tableName);
 
@@ -157,10 +158,12 @@ namespace AWSome.Dynamite.Client
         /// <param name="keyName">Name of key which will be used to delete all items with it</param>
         public void DeleteAllItems(string tableName, string keyName, [Optional] string sortkey)
         {
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
-                List<string> attributesToGet = new List<string>();
-                attributesToGet.Add(keyName);
+                List<string> attributesToGet = new List<string>
+                {
+                    keyName
+                };
 
                 if (sortkey != null)
                 {

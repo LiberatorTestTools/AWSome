@@ -56,7 +56,7 @@ namespace AWSome.Dynamite.Client
         /// <param name="tableName">The name of the table to be created</param>
         public void CreateTable(string tableName)
         {
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 CreateTableRequest createTableRequest = new CreateTableRequest
                 {
@@ -90,11 +90,13 @@ namespace AWSome.Dynamite.Client
         /// <param name="tableName">The name of the table to be updated</param>
         public void UpdateTable(string tableName)
         {
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
-                UpdateTableRequest updateTableRequest = new UpdateTableRequest();
-                updateTableRequest.TableName = tableName;
-                updateTableRequest.ProvisionedThroughput = new ProvisionedThroughput() { ReadCapacityUnits = 2, WriteCapacityUnits = 2 };
+                UpdateTableRequest updateTableRequest = new UpdateTableRequest
+                {
+                    TableName = tableName,
+                    ProvisionedThroughput = new ProvisionedThroughput() { ReadCapacityUnits = 2, WriteCapacityUnits = 2 }
+                };
 
                 UpdateTableResponse updateTableResponse = client.UpdateTable(updateTableRequest);
             }
@@ -106,7 +108,7 @@ namespace AWSome.Dynamite.Client
         /// <param name="tableName">The name of the table to be deleted</param>
         public void DeleteTable(string tableName)
         {
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 DeleteTableRequest deleteTableRequest = new DeleteTableRequest(tableName);
                 DeleteTableResponse deleteTableResponse = client.DeleteTable(deleteTableRequest);
@@ -120,7 +122,7 @@ namespace AWSome.Dynamite.Client
         /// <returns>A list containing the names of the tables within the Dynamo DB</returns>
         public List<string> GetListOfTables()
         {
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 ListTablesResponse listTablesResponse = client.ListTables();
                 return listTablesResponse.TableNames;
@@ -133,7 +135,7 @@ namespace AWSome.Dynamite.Client
         public void GetDetailsForTables()
         {
             List<string> tables = GetListOfTables();
-            using (IAmazonDynamoDB client = Preferences.GetInstance().GetDynamoDbClient())
+            using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 foreach (string table in tables)
                 {

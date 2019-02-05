@@ -10,7 +10,7 @@ namespace AWSome.Messages.Transactions
     /// <summary>
     /// Receiver for Kinesis messages
     /// </summary>
-    public class Receiver
+    public class KinesisReceiver
     {
         /// <summary>
         /// Gets records from the Kinesis stream
@@ -29,6 +29,7 @@ namespace AWSome.Messages.Transactions
 
             return GetRecords(kinesisClient, describeResponse, fromDateTime);
         }
+
 
         /// <summary>
         /// Gets the records from the named stream
