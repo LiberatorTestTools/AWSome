@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AWSome.Bucket")]
+[assembly: AssemblyTitle("Liberator.AWSome.Bucket")]
 [assembly: AssemblyDescription("An abstraction layer for handling S3 AWS buckets")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Totally Ratted Ltd")]
-[assembly: AssemblyProduct("AWSome.Bucket")]
+[assembly: AssemblyProduct("Liberator.AWSome.Bucket")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

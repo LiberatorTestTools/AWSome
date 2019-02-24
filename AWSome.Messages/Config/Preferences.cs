@@ -6,7 +6,7 @@ using NUnit.Framework;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace AWSome.Messages.Config
+namespace Liberator.AWSome.Messages.Config
 {
     public class Preferences
     {

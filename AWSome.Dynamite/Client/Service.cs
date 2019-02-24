@@ -1,12 +1,15 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
-using AWSome.Dynamite.Config;
+using Liberator.AWSome.Dynamite.Config;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace AWSome.Dynamite.Client
+namespace Liberator.AWSome.Dynamite.Client
 {
+    /// <summary>
+    /// The abstract class on which a service is based
+    /// </summary>
     public abstract class Service
     {
         /// <summary>

@@ -8,7 +8,7 @@ using System.Configuration;
 using System.IO;
 using System.Reflection;
 
-namespace AWSome.Piping.Config
+namespace Liberator.AWSome.Piping.Config
 {
     public class Preferences
     {

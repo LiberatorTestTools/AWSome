@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Amazon.DataPipeline.Model;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
-using AWSome.Piping.Config;
+using Liberator.AWSome.Piping.Config;
 using Moq;
 using NUnit.Framework;
 

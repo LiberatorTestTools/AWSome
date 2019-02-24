@@ -1,7 +1,7 @@
 ﻿using Amazon.ECS;
 using Amazon.ECS.Model;
 using Amazon.Runtime;
-using AWSome.ECStraordinary.Config;
+using Liberator.AWSome.ECStraordinary.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,21 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWSome.ECStraordinary.Client
+namespace Liberator.AWSome.ECStraordinary.Client
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class ECSConnector
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public AWSCredentials UserAWSCredentials = Preferences.GetAWSCredentials();
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AmazonECSConfig ECSConfig = Preferences.GetECSConfig();
 
         /// <summary>

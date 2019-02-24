@@ -5,15 +5,36 @@ using Amazon.S3;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace AWSome.Bucket.Config
+namespace Liberator.AWSome.Bucket.Config
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Preferences
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static RegionEndpoint RegionEndpoint { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static string ProfileName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static string ProfileLocation { get; set; }
 
         /// <summary>
@@ -24,10 +45,10 @@ namespace AWSome.Bucket.Config
         }
 
 
-        // <summary>
-        // Gets the DynamoDB Client set in the App.config file
-        // </summary>
-        // <returns>The Dynamo DB Client as configured</returns>
+        /// <summary>
+        /// Gets the Amazon S3 Client set in the App.config file
+        /// </summary>
+        /// <returns>The Amazon S3 Client as configured</returns>
         public static IAmazonS3 GetAmazonS3Client()
         {
             UserAWSCredentials = GetAWSCredentials();

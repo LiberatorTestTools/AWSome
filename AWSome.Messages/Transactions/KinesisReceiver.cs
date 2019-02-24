@@ -1,11 +1,11 @@
 ﻿using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
-using AWSome.Messages.Config;
+using Liberator.AWSome.Messages.Config;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AWSome.Messages.Transactions
+namespace Liberator.AWSome.Messages.Transactions
 {
     /// <summary>
     /// Receiver for Kinesis messages

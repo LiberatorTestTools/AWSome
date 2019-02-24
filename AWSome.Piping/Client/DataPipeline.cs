@@ -1,13 +1,13 @@
 ﻿using Amazon.DataPipeline;
 using Amazon.DataPipeline.Model;
 using Amazon.Runtime;
-using AWSome.Piping.Config;
+using Liberator.AWSome.Piping.Config;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace AWSome.Piping.Client
+namespace Liberator.AWSome.Piping.Client
 {
     /// <summary>
     /// The client class for handling Amazon Data Pipelines

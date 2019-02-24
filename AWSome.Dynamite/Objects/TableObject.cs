@@ -1,7 +1,10 @@
 ﻿using Amazon.DynamoDBv2.DocumentModel;
 
-namespace AWSome.Dynamite.Objects
+namespace Liberator.AWSome.Dynamite.Objects
 {
+    /// <summary>
+    /// abstract basis for a table object
+    /// </summary>
     public abstract class TableObject
     {
         /// <summary>

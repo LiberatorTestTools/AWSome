@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Net;
 using ParameterValue = Amazon.DataPipeline.Model.ParameterValue;
 
-namespace AWSome.Tests.Piping
+namespace Liberator.AWSome.Tests.Piping
 {
     /// <summary>
     /// Contains methods that return mock DataPipeline objects for testing purposes

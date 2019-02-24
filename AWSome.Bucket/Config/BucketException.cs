@@ -1,10 +1,18 @@
 ﻿using Amazon.S3;
 using System;
 
-namespace AWSome.Bucket.Config
+namespace Liberator.AWSome.Bucket.Config
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BucketException : Exception
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="exception"></param>
         public BucketException(string message, AmazonS3Exception exception)
         {
             Console.WriteLine(message);

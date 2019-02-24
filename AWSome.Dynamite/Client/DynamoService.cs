@@ -1,16 +1,20 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using AWSome.Dynamite.Config;
-using AWSome.Dynamite.Objects;
+using Liberator.AWSome.Dynamite.Config;
+using Liberator.AWSome.Dynamite.Objects;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace AWSome.Dynamite.Client
+namespace Liberator.AWSome.Dynamite.Client
 {
+    /// <summary>
+    /// The service for the DynamoDB
+    /// </summary>
+    /// <typeparam name="TObject">The type of object being used</typeparam>
     public class DynamoService<TObject> : Service
         where TObject : TableObject
     {
@@ -156,6 +160,7 @@ namespace AWSome.Dynamite.Client
         /// </summary>
         /// <param name="tableName">Name of table to delete items from</param>
         /// <param name="keyName">Name of key which will be used to delete all items with it</param>
+        /// <param name="sortkey"></param>
         public void DeleteAllItems(string tableName, string keyName, [Optional] string sortkey)
         {
             using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())

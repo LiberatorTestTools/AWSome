@@ -1,7 +1,7 @@
 ﻿using Amazon.DataPipeline;
 using System;
 
-namespace AWSome.Piping.Config
+namespace Liberator.AWSome.Piping.Config
 {
     public class PipingException : Exception
     {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AWSome.Piping")]
+[assembly: AssemblyTitle("AWSome.PipeBomb")]
 [assembly: AssemblyDescription("An abstraction layer for Amazon Data Pipeline")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Totally Ratted Ltd")]
-[assembly: AssemblyProduct("AWSome.Piping")]
+[assembly: AssemblyCompany("Liberator Test Tools")]
+[assembly: AssemblyProduct("AWSome.PipeBomb")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

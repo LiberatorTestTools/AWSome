@@ -1,13 +1,13 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
-using AWSome.Bucket.Config;
+using Liberator.AWSome.Bucket.Config;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace AWSome.Bucket.Client
+namespace Liberator.AWSome.Bucket.Client
 {
     /// <summary>
     /// Connector for to S3 buckets.

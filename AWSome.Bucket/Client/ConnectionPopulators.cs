@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace AWSome.Bucket.Client
+namespace Liberator.AWSome.Bucket.Client
 {
     public partial class Connector
     {

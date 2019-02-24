@@ -6,22 +6,56 @@ using NUnit.Framework;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace AWSome.Dynamite.Config
+namespace Liberator.AWSome.Dynamite.Config
 {
+    /// <summary>
+    /// Preferences for the library
+    /// </summary>
     public static class Preferences
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static RegionEndpoint RegionEndpoint { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static string AWSProfileName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool StreamEnabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static StreamViewType StreamViewType { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool SSEEnabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static string KMSMasterKeyId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static SSEType SSEType { get; set; }
 
         /// <summary>
@@ -56,6 +90,10 @@ namespace AWSome.Dynamite.Config
             return new AmazonDynamoDBClient(UserAWSCredentials, RegionEndpoint);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private static AWSCredentials GetAWSCredentials()
         {
             CredentialProfileStoreChain profileStoreChain = new CredentialProfileStoreChain();

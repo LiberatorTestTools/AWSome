@@ -2,10 +2,18 @@
 using System;
 
 
-namespace AWSome.ECStraordinary.Config
+namespace Liberator.AWSome.ECStraordinary.Config
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ECSException : Exception
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="exception"></param>
         public ECSException(string message, AmazonECSException exception)
         {
             Console.WriteLine(message);

@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace AWSome.Messages.Objects
+namespace Liberator.AWSome.Messages.Objects
 {
     /// <summary>
     /// Abstract class to form the basis of Kinesis messages
