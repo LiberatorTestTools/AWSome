@@ -3,18 +3,11 @@ using Amazon.DataPipeline;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using NUnit.Framework;
-using System;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
 
 namespace Liberator.AWSome.Piping.Config
 {
     public class Preferences
     {
-        static Configuration configFile = ConfigurationManager.OpenExeConfiguration(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/AWSome.Piping.dll");
-        static KeyValueConfigurationCollection appSettings = configFile.AppSettings.Settings;
-
         public static string AWSProfileName { get; set; }
         public static RegionEndpoint RegionEndpoint { get; set; }
         public static AWSCredentials UserAWSCredentials { get; set; }
@@ -46,20 +39,6 @@ namespace Liberator.AWSome.Piping.Config
         public int GetPipelinePollingDelay()
         {
             return PipelinePollingDelay;
-        }
-
-
-        /// <summary>
-        /// Sets the Preferences based on the configuration file
-        /// </summary>
-        static Preferences()
-        {
-            RegionEndpoint = RegionEndpoint.GetBySystemName(appSettings["RegionEndpoint"].Value);
-            AWSProfileName = appSettings["AWSProfileName"].Value;
-            PipelineMaxTime = Convert.ToInt32(appSettings["PipelineMaxTime"].Value);
-            PipelinePollingDelay = Convert.ToInt32(appSettings["PipelinePollingDelay"].Value);
-            UserAWSCredentials = GetAWSCredentials();
-            PipelineId = appSettings["PipelineId"].Value;
         }
 
         /// <summary>
