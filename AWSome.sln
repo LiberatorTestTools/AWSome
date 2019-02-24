@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.PipeBomb", "AWSome.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Dynamite", "AWSome.Dynamite\AWSome.Dynamite.csproj", "{F921BFC2-C7A9-4315-BB45-B6AFD46B5053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Messages", "AWSome.Messages\AWSome.Messages.csproj", "{18A09CB2-CD64-4042-8F61-73D45A84A9C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Chatter", "AWSome.Chatter\AWSome.Chatter.csproj", "{18A09CB2-CD64-4042-8F61-73D45A84A9C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.ECStraordinary", "AWSome.ECStraordinary\AWSome.ECStraordinary.csproj", "{6E9ED622-7C04-4595-9BA0-A44A180EC4A1}"
 EndProject

@@ -1,7 +1,6 @@
 ﻿using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
 using Amazon.Runtime;
-using Liberator.AWSome.Messages.Config;
 using Moq;
 using System;
 using System.Collections.Generic;

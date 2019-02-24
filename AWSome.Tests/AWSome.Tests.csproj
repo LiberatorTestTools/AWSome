@@ -95,9 +95,9 @@
       <Project>{f921bfc2-c7a9-4315-bb45-b6afd46b5053}</Project>
       <Name>AWSome.Dynamite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AWSome.Messages\AWSome.Messages.csproj">
+    <ProjectReference Include="..\AWSome.Chatter\AWSome.Chatter.csproj">
       <Project>{18a09cb2-cd64-4042-8f61-73d45a84a9c1}</Project>
-      <Name>AWSome.Messages</Name>
+      <Name>AWSome.Chatter</Name>
     </ProjectReference>
     <ProjectReference Include="..\AWSome.PipeBomb\AWSome.PipeBomb.csproj">
       <Project>{94b4af52-f182-4d25-8a15-83e744029957}</Project>

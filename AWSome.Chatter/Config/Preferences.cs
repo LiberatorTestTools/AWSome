@@ -4,31 +4,30 @@ using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using NUnit.Framework;
 
-namespace Liberator.AWSome.Messages.Config
+namespace Liberator.AWSome.Chatter.Config
 {
     /// <summary>
-    /// 
+    /// Preferences for Chatter
     /// </summary>
     public class Preferences
     {
-
         /// <summary>
-        /// 
+        /// The name of the AWS profile
         /// </summary>
         public static string AWSProfileName { get; set; }
 
         /// <summary>
-        /// 
+        /// The name of the kinesis stream
         /// </summary>
         public static string KinesisStreamName { get; set; }
 
         /// <summary>
-        /// 
+        /// The endpoint to be used for the stream
         /// </summary>
         public static RegionEndpoint RegionEndpoint { get; set; }
 
         /// <summary>
-        /// 
+        /// The AWS credentials for the user
         /// </summary>
         public static AWSCredentials UserAWSCredentials { get; private set; }
 
@@ -60,9 +59,9 @@ namespace Liberator.AWSome.Messages.Config
         }
 
         /// <summary>
-        /// 
+        /// Gets the user's AWS Credentials
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The AWS Credentials for the user</returns>
         private static AWSCredentials GetAWSCredentials()
         {
             CredentialProfileStoreChain profileStoreChain = new CredentialProfileStoreChain();

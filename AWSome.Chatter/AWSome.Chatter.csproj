@@ -7,8 +7,8 @@
     <ProjectGuid>{18A09CB2-CD64-4042-8F61-73D45A84A9C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Liberator.AWSome.Messages</RootNamespace>
-    <AssemblyName>Liberator.AWSome.Messages</AssemblyName>
+    <RootNamespace>Liberator.AWSome.Chatter</RootNamespace>
+    <AssemblyName>Liberator.AWSome.Chatter</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Liberator.AWSome.Chatter.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
