@@ -2,8 +2,6 @@
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using Amazon.S3;
-using System.Collections.Specialized;
-using System.Configuration;
 
 namespace Liberator.AWSome.Bucket.Config
 {
@@ -12,11 +10,6 @@ namespace Liberator.AWSome.Bucket.Config
     /// </summary>
     public class Preferences
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
-
         /// <summary>
         /// 
         /// </summary>
@@ -36,15 +29,7 @@ namespace Liberator.AWSome.Bucket.Config
         /// 
         /// </summary>
         public static string ProfileLocation { get; set; }
-
-        /// <summary>
-        /// Sets the Preferences based on the configuration file
-        /// </summary>
-        public Preferences()
-        {
-        }
-
-
+        
         /// <summary>
         /// Gets the Amazon S3 Client set in the App.config file
         /// </summary>
