@@ -18,7 +18,7 @@ namespace Liberator.AWSome.Messages.Transactions
         /// <returns>A list of records from the Kinesis stream</returns>
         public static List<Record> GetRecordsFromKinesisQueue(DateTime fromDateTime)
         {
-            AmazonKinesisClient kinesisClient = Preferences.GetInstance().GetKinesisClient();
+            AmazonKinesisClient kinesisClient = Preferences.GetKinesisClient();
 
             DescribeStreamRequest describeRequest = new DescribeStreamRequest
             {
