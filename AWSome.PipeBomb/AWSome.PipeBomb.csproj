@@ -7,7 +7,7 @@
     <ProjectGuid>{94B4AF52-F182-4D25-8A15-83E744029957}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Liberator.AWSome.Piping</RootNamespace>
+    <RootNamespace>Liberator.AWSome.PipeBomb</RootNamespace>
     <AssemblyName>Liberator.AWSome.PipeBomb</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Liberator.AWSome.PipeBomb.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\DataPipeline.cs" />
-    <Compile Include="Config\PipingException.cs" />
+    <Compile Include="Config\PipeBombException.cs" />
     <Compile Include="Config\Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -99,9 +99,9 @@
       <Project>{18a09cb2-cd64-4042-8f61-73d45a84a9c1}</Project>
       <Name>AWSome.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AWSome.Piping\AWSome.Piping.csproj">
+    <ProjectReference Include="..\AWSome.PipeBomb\AWSome.PipeBomb.csproj">
       <Project>{94b4af52-f182-4d25-8a15-83e744029957}</Project>
-      <Name>AWSome.Piping</Name>
+      <Name>AWSome.PipeBomb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

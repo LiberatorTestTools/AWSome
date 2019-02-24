@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Bucket", "AWSome.Buc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Tests", "AWSome.Tests\AWSome.Tests.csproj", "{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Piping", "AWSome.Piping\AWSome.Piping.csproj", "{94B4AF52-F182-4D25-8A15-83E744029957}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.PipeBomb", "AWSome.PipeBomb\AWSome.PipeBomb.csproj", "{94B4AF52-F182-4D25-8A15-83E744029957}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Dynamite", "AWSome.Dynamite\AWSome.Dynamite.csproj", "{F921BFC2-C7A9-4315-BB45-B6AFD46B5053}"
 EndProject
