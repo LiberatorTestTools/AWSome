@@ -16,11 +16,6 @@ namespace Liberator.AWSome.ECStraordinary.Config
         /// <summary>
         /// 
         /// </summary>
-        public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
-
-        /// <summary>
-        /// 
-        /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
 
         /// <summary>
