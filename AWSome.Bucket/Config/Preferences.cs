@@ -6,27 +6,27 @@ using Amazon.S3;
 namespace Liberator.AWSome.Bucket.Config
 {
     /// <summary>
-    /// 
+    /// The preferences for the AWSome Bucket
     /// </summary>
     public class Preferences
     {
         /// <summary>
-        /// 
+        /// The credentials for the current user
         /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
 
         /// <summary>
-        /// 
+        /// The region for the S3 Bucket
         /// </summary>
         public static RegionEndpoint RegionEndpoint { get; set; }
 
         /// <summary>
-        /// 
+        /// The name of the profile for which the bucket exists
         /// </summary>
         public static string ProfileName { get; set; }
 
         /// <summary>
-        /// 
+        /// The location of the profile
         /// </summary>
         public static string ProfileLocation { get; set; }
         
