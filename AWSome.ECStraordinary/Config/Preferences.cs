@@ -2,34 +2,32 @@
 using Amazon.ECS;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
-using System.Collections.Specialized;
-using System.Configuration;
 
 
 namespace Liberator.AWSome.ECStraordinary.Config
 {
     /// <summary>
-    /// 
+    /// The preferences for the Elastic Container Service
     /// </summary>
     public class Preferences
     {
         /// <summary>
-        /// 
+        /// The credentials for the current user
         /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
 
         /// <summary>
-        /// 
+        /// The region for the Elastic Container Service
         /// </summary>
         public static RegionEndpoint RegionEndpoint { get; set; }
 
         /// <summary>
-        /// 
+        /// The name for
         /// </summary>
         public static string ProfileName { get; set; }
 
         /// <summary>
-        /// 
+        /// The location for the current profile
         /// </summary>
         public static string ProfileLocation { get; set; }
 
