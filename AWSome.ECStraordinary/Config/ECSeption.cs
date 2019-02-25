@@ -5,16 +5,16 @@ using System;
 namespace Liberator.AWSome.ECStraordinary.Config
 {
     /// <summary>
-    /// 
+    /// An exception
     /// </summary>
-    public class ECSException : Exception
+    public class ECSeption : Exception
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
-        public ECSException(string message, AmazonECSException exception)
+        public ECSeption(string message, AmazonECSException exception)
         {
             Console.WriteLine(message);
             Console.WriteLine("Amazon error code: {0}", string.IsNullOrEmpty(exception.ErrorCode) ? "None" : exception.ErrorCode);
