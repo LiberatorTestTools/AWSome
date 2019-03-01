@@ -4,7 +4,7 @@ using System;
 namespace Liberator.AWSome.PipeBomb.Config
 {
     /// <summary>
-    /// An exception thrown by PipeBomb
+    /// An AWSome pipe bomb has exploded
     /// </summary>
     public class PipeBombException : Exception
     {
