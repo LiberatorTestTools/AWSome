@@ -1,13 +1,13 @@
 ﻿using Amazon.DataPipeline;
 using Amazon.DataPipeline.Model;
 using Amazon.Runtime;
-using AWSome.Piping.Config;
+using Liberator.AWSome.PipeBomb.Config;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace AWSome.Piping.Client
+namespace Liberator.AWSome.PipeBomb.Client
 {
     /// <summary>
     /// The client class for handling Amazon Data Pipelines
@@ -107,7 +107,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to activate the pipeline.", e);
+                throw new PipeBombException("Unable to activate the pipeline.", e);
             }
         }
 
@@ -140,7 +140,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to activate the pipeline.", e);
+                throw new PipeBombException("Unable to activate the pipeline.", e);
             }
         }
 
@@ -172,7 +172,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to activate the requested pipeline.", e);
+                throw new PipeBombException("Unable to activate the requested pipeline.", e);
             }
         }
 
@@ -208,7 +208,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to activate the requested pipeline.", e);
+                throw new PipeBombException("Unable to activate the requested pipeline.", e);
             }
         }
 
@@ -234,7 +234,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to create the requested pipeline.", e);
+                throw new PipeBombException("Unable to create the requested pipeline.", e);
             }
         }
 
@@ -261,7 +261,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to create the requested pipeline.", e);
+                throw new PipeBombException("Unable to create the requested pipeline.", e);
             }
         }
 
@@ -286,7 +286,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to create the requested pipeline.", e);
+                throw new PipeBombException("Unable to create the requested pipeline.", e);
             }
         }
 
@@ -313,7 +313,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to create the requested pipeline.", e);
+                throw new PipeBombException("Unable to create the requested pipeline.", e);
             }
         }
 
@@ -334,7 +334,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to deactivate the requested pipeline.", e);
+                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
             }
         }
 
@@ -358,7 +358,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to deactivate the requested pipeline.", e);
+                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
             }
         }
 
@@ -381,7 +381,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to deactivate the requested pipeline.", e);
+                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
             }
         }
 
@@ -406,7 +406,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to deactivate the requested pipeline.", e);
+                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
             }
         }
 
@@ -428,7 +428,7 @@ namespace AWSome.Piping.Client
             catch (AmazonDataPipelineException e)
             {
 
-                throw new PipingException("Unable to delete the requested pipeline.", e);
+                throw new PipeBombException("Unable to delete the requested pipeline.", e);
             }
         }
 
@@ -451,7 +451,7 @@ namespace AWSome.Piping.Client
             catch (AmazonDataPipelineException e)
             {
 
-                throw new PipingException("Unable to delete the requested pipeline.", e);
+                throw new PipeBombException("Unable to delete the requested pipeline.", e);
             }
         }
 
@@ -474,7 +474,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to delete the requested pipeline.", e);
+                throw new PipeBombException("Unable to delete the requested pipeline.", e);
             }
         }
 
@@ -498,7 +498,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to delete the requested pipeline.", e);
+                throw new PipeBombException("Unable to delete the requested pipeline.", e);
             }
         }
 
@@ -519,7 +519,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested objects on the pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
                 throw;
             }
         }
@@ -545,7 +545,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested objects on the pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
                 throw;
             }
         }
@@ -569,7 +569,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested objects on the pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
             }
         }
 
@@ -596,7 +596,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested objects on the pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
             }
         }
 
@@ -617,7 +617,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested pipeline.", e);
             }
         }
 
@@ -640,7 +640,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to describe the requested pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested pipeline.", e);
             }
         }
 
@@ -664,7 +664,7 @@ namespace AWSome.Piping.Client
             catch (AmazonDataPipelineException e)
             {
 
-                throw new PipingException("Unable to describe the requested pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested pipeline.", e);
             }
         }
 
@@ -690,7 +690,7 @@ namespace AWSome.Piping.Client
             catch (AmazonDataPipelineException e)
             {
 
-                throw new PipingException("Unable to describe the requested pipeline.", e);
+                throw new PipeBombException("Unable to describe the requested pipeline.", e);
             }
         }
 
@@ -711,7 +711,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to evaluate the expression in the context of the specified object.", e);
+                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
             }
         }
 
@@ -736,7 +736,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to evaluate the expression in the context of the specified object.", e);
+                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
             }
         }
 
@@ -759,7 +759,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to evaluate the expression in the context of the specified object.", e);
+                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
             }
         }
 
@@ -786,7 +786,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to evaluate the expression in the context of the specified object.", e);
+                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
             }
         }
 
@@ -807,7 +807,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve the definition of the requested pipeline", e);
+                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline", e);
             }
         }
 
@@ -831,7 +831,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve the definition of the requested pipeline", e);
+                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline", e);
             }
         }
 
@@ -854,7 +854,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve the definition of the requested pipeline.", e);
+                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline.", e);
             }
         }
 
@@ -880,7 +880,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve the definition of the requested pipeline.", e);
+                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline.", e);
             }
         }
 
@@ -901,7 +901,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve a list of pipelines.", e);
+                throw new PipeBombException("Unable to retrieve a list of pipelines.", e);
             }
         }
 
@@ -924,7 +924,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to retrieve a list of pipelines.", e);
+                throw new PipeBombException("Unable to retrieve a list of pipelines.", e);
             }
         }
 
@@ -945,7 +945,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to update the pipline definition.", e);
+                throw new PipeBombException("Unable to update the pipline definition.", e);
             }
         }
 
@@ -972,7 +972,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to update the pipline definition.", e);
+                throw new PipeBombException("Unable to update the pipline definition.", e);
             }
         }
 
@@ -995,7 +995,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to update the pipeline definition.", e);
+                throw new PipeBombException("Unable to update the pipeline definition.", e);
             }
         }
 
@@ -1024,7 +1024,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to update the pipeline definition.", e);
+                throw new PipeBombException("Unable to update the pipeline definition.", e);
             }
         }
 
@@ -1045,7 +1045,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to return query results.", e);
+                throw new PipeBombException("Unable to return query results.", e);
             }
         }
 
@@ -1071,7 +1071,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to return query results.", e);
+                throw new PipeBombException("Unable to return query results.", e);
             }
         }
 
@@ -1094,7 +1094,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to return query results.", e);
+                throw new PipeBombException("Unable to return query results.", e);
             }
         }
 
@@ -1122,7 +1122,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to return query results.", e);
+                throw new PipeBombException("Unable to return query results.", e);
             }
         }
 
@@ -1143,7 +1143,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to remove the tags from the specified pipeline.", e);
+                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
             }
         }
 
@@ -1167,7 +1167,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to remove the tags from the specified pipeline.", e);
+                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
             }
         }
 
@@ -1190,7 +1190,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to remove the tags from the specified pipeline.", e);
+                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
             }
         }
 
@@ -1216,7 +1216,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to remove the tags from the specified pipeline.", e);
+                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
             }
         }
 
@@ -1237,7 +1237,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to set the status of the pipeline object.", e);
+                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
             }
         }
 
@@ -1262,7 +1262,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to set the status of the pipeline object.", e);
+                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
             }
         }
 
@@ -1285,7 +1285,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to set the status of the pipeline object.", e);
+                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
             }
         }
 
@@ -1312,7 +1312,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to set the status of the pipeline object.", e);
+                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
             }
         }
 
@@ -1333,7 +1333,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to validate the pipeline definition.", e);
+                throw new PipeBombException("Unable to validate the pipeline definition.", e);
             }
         }
 
@@ -1360,7 +1360,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to validate the pipeline definition.", e);
+                throw new PipeBombException("Unable to validate the pipeline definition.", e);
             }
         }
 
@@ -1383,7 +1383,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to validate the pipeline definition.", e);
+                throw new PipeBombException("Unable to validate the pipeline definition.", e);
             }
         }
 
@@ -1412,7 +1412,7 @@ namespace AWSome.Piping.Client
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipingException("Unable to validate the pipeline definition.", e);
+                throw new PipeBombException("Unable to validate the pipeline definition.", e);
             }
         }
 

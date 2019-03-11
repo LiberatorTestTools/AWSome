@@ -1,7 +1,7 @@
 ﻿using Amazon.ECS;
 using Amazon.ECS.Model;
 using Amazon.Runtime;
-using AWSome.ECStraordinary.Config;
+using Liberator.AWSome.ECStraordinary.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,21 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWSome.ECStraordinary.Client
+namespace Liberator.AWSome.ECStraordinary.Client
 {
+    /// <summary>
+    /// The connector for the Amazon Elastic Container Service
+    /// </summary>
     public partial class ECSConnector
     {
-
+        /// <summary>
+        /// The credentials for the current user
+        /// </summary>
         public AWSCredentials UserAWSCredentials = Preferences.GetAWSCredentials();
 
+        /// <summary>
+        /// The configuration for the Elastic Container Service
+        /// </summary>
         public AmazonECSConfig ECSConfig = Preferences.GetECSConfig();
 
         /// <summary>
@@ -40,7 +48,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Run task with task definition {runTaskRequest.TaskDefinition} failed", e);
+                    throw new ECSeption($"Run task with task definition {runTaskRequest.TaskDefinition} failed", e);
                 }
             };
         }
@@ -66,7 +74,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Cluster listing has failed.", e);
+                    throw new ECSeption("Cluster listing has failed.", e);
                 }
             }
         }
@@ -93,7 +101,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Cluster creation has failed.", e);
+                    throw new ECSeption("Cluster creation has failed.", e);
                 }
             }
         }
@@ -119,7 +127,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Task listing has failed.", e);
+                    throw new ECSeption("Task listing has failed.", e);
                 }
             }
         }
@@ -145,7 +153,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Creating service response has failed.", e);
+                    throw new ECSeption("Creating service response has failed.", e);
                 }
             }
         }
@@ -166,7 +174,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Deleting cluster with name {deleteClusterRequest.Cluster} has failed.", e);
+                    throw new ECSeption($"Deleting cluster with name {deleteClusterRequest.Cluster} has failed.", e);
                 }
             }
         }
@@ -187,7 +195,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Deleting service with name {deleteServiceRequest.Service} from cluster {deleteServiceRequest.Cluster} has failed.", e);
+                    throw new ECSeption($"Deleting service with name {deleteServiceRequest.Service} from cluster {deleteServiceRequest.Cluster} has failed.", e);
                 }
             }
         }
@@ -209,7 +217,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Deregistering container with ID {deregisterContainerInstanceRequest.ContainerInstance} from cluster {deregisterContainerInstanceRequest.Cluster} has failed.", e);
+                    throw new ECSeption($"Deregistering container with ID {deregisterContainerInstanceRequest.ContainerInstance} from cluster {deregisterContainerInstanceRequest.Cluster} has failed.", e);
                 }
             }
         }
@@ -232,7 +240,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Deregistering task definition with ARN {deregisterTaskDefinitionRequest.TaskDefinition} has failed.", e);
+                    throw new ECSeption($"Deregistering task definition with ARN {deregisterTaskDefinitionRequest.TaskDefinition} has failed.", e);
                 }
             }
         }
@@ -259,7 +267,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Listing container instances has failed.", e);
+                    throw new ECSeption("Listing container instances has failed.", e);
                 }
             }
         }
@@ -280,7 +288,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Getting task definition has failed.", e);
+                    throw new ECSeption("Getting task definition has failed.", e);
                 }
             }
         }
@@ -302,7 +310,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException("Describing services has failed.", e);
+                    throw new ECSeption("Describing services has failed.", e);
                 }
             }
         }
@@ -324,7 +332,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Starting a task in cluster {startTaskRequest.Cluster} has failed.", e);
+                    throw new ECSeption($"Starting a task in cluster {startTaskRequest.Cluster} has failed.", e);
                 }
             }
         }
@@ -346,7 +354,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Stopping task {stopTaskRequest.Task} has failed.", e);
+                    throw new ECSeption($"Stopping task {stopTaskRequest.Task} has failed.", e);
                 }
             }
         }
@@ -369,7 +377,7 @@ namespace AWSome.ECStraordinary.Client
                 }
                 catch (AmazonECSException e)
                 {
-                    throw new ECSException($"Adding tags to resource with Resource Arn {tagResourceRequest.ResourceArn} has failed.", e);
+                    throw new ECSeption($"Adding tags to resource with Resource Arn {tagResourceRequest.ResourceArn} has failed.", e);
                 }
             }
         }

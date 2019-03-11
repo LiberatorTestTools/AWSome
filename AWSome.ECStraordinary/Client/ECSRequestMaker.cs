@@ -3,7 +3,7 @@ using Amazon.ECS.Model;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace AWSome.ECStraordinary.Client
+namespace Liberator.AWSome.ECStraordinary.Client
 {
     public partial class ECSConnector
     {

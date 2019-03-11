@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Amazon.DataPipeline.Model;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
-using AWSome.Piping.Config;
+using Liberator.AWSome.PipeBomb.Config;
 using Moq;
 using NUnit.Framework;
 
-namespace AWSome.Tests.Piping
+namespace AWSome.Tests.PipeBomb
 {
     [TestFixture]
-    public class PipelineTests
+    public class PipeBombTests
     {
     }
 }

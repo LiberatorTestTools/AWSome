@@ -1,11 +1,11 @@
 ﻿using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
-using AWSome.Messages.Config;
+using Liberator.AWSome.Chatter.Config;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AWSome.Messages.Transactions
+namespace Liberator.AWSome.Chatter.Transactions
 {
     /// <summary>
     /// Receiver for Kinesis messages
@@ -18,7 +18,7 @@ namespace AWSome.Messages.Transactions
         /// <returns>A list of records from the Kinesis stream</returns>
         public static List<Record> GetRecordsFromKinesisQueue(DateTime fromDateTime)
         {
-            AmazonKinesisClient kinesisClient = Preferences.GetInstance().GetKinesisClient();
+            AmazonKinesisClient kinesisClient = Preferences.GetKinesisClient();
 
             DescribeStreamRequest describeRequest = new DescribeStreamRequest
             {
@@ -36,6 +36,7 @@ namespace AWSome.Messages.Transactions
         /// </summary>
         /// <param name="kinesisClient">The Kinesis client object</param>
         /// <param name="describeResponse">The stream response descriptor</param>
+        /// <param name="fromDateTime"></param>
         private static List<Record> GetRecords(AmazonKinesisClient kinesisClient, DescribeStreamResponse describeResponse, DateTime fromDateTime)
         {
             List<Shard> shards = describeResponse.StreamDescription.Shards;

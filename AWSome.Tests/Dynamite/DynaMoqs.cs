@@ -5,7 +5,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Net;
 
-namespace AWSome.Tests.Dynamite
+namespace Liberator.AWSome.Tests.Dynamite
 {
     public static class DynaMoqs
     {

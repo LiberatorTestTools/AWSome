@@ -5,7 +5,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Net;
 
-namespace AWSome.Tests.Bucket
+namespace Liberator.AWSome.Tests.Bucket
 {
     public static class BucketMoqs
     {

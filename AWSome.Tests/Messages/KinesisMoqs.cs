@@ -1,14 +1,13 @@
 ﻿using Amazon.Kinesis;
 using Amazon.Kinesis.Model;
 using Amazon.Runtime;
-using AWSome.Messages.Config;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
-namespace AWSome.Tests.Messages
+namespace Liberator.AWSome.Tests.Messages
 {
     public class KinesisMoqs
     {

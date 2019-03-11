@@ -1,10 +1,18 @@
 ﻿using Amazon.S3;
 using System;
 
-namespace AWSome.Bucket.Config
+namespace Liberator.AWSome.Bucket.Config
 {
+    /// <summary>
+    /// An exception has been thrown into a bucket
+    /// </summary>
     public class BucketException : Exception
     {
+        /// <summary>
+        /// There has been an exceptional bucket found
+        /// </summary>
+        /// <param name="message">The message sent by Bucket</param>
+        /// <param name="exception">The inner exception that was thrown</param>
         public BucketException(string message, AmazonS3Exception exception)
         {
             Console.WriteLine(message);

@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AWSome.Messages")]
+[assembly: AssemblyTitle("Liberator.AWSome.Chatter")]
 [assembly: AssemblyDescription("An abstraction layer for handling Kinesis streams")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Totally Ratted Ltd")]
-[assembly: AssemblyProduct("AWSome.Messages")]
-[assembly: AssemblyCopyright("Copyright © 2018")]
+[assembly: AssemblyProduct("Liberator.AWSome.Chatter")]
+[assembly: AssemblyCopyright("Copyright © 2018-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

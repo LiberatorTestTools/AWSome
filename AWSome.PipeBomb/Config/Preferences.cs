@@ -3,64 +3,48 @@ using Amazon.DataPipeline;
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using NUnit.Framework;
-using System;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
 
-namespace AWSome.Piping.Config
+namespace Liberator.AWSome.PipeBomb.Config
 {
+    /// <summary>
+    /// Preferences for AWSome PipeBomb
+    /// </summary>
     public class Preferences
     {
-        static Configuration configFile = ConfigurationManager.OpenExeConfiguration(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/AWSome.Piping.dll");
-        static KeyValueConfigurationCollection appSettings = configFile.AppSettings.Settings;
-
+        /// <summary>
+        /// The profile name to use
+        /// </summary>
         public static string AWSProfileName { get; set; }
-        public static RegionEndpoint RegionEndpoint { get; set; }
-        public static AWSCredentials UserAWSCredentials { get; set; }
-        public static AmazonDataPipelineConfig PipelineConfig { get; set; }
-        public static string PipelineId { get; set; }
-
-        public string GetPipelineId()
-        {
-            return PipelineId;
-        }
-
-        public static int PipelinePollingDelay { get; set; }
-        public static int PipelineMaxTime { get; set; }
-
-        public AmazonDataPipelineConfig GetPipelineConfig()
-        {
-            return new AmazonDataPipelineConfig()
-            {
-                RegionEndpoint = RegionEndpoint.EUWest1
-            };
-
-        }
-
-        public int GetPipelineMaxTime()
-        {
-            return PipelineMaxTime;
-        }
-
-        public int GetPipelinePollingDelay()
-        {
-            return PipelinePollingDelay;
-        }
-
 
         /// <summary>
-        /// Sets the Preferences based on the configuration file
+        /// The Region Endpoint for the pipeline
         /// </summary>
-        static Preferences()
-        {
-            RegionEndpoint = RegionEndpoint.GetBySystemName(appSettings["RegionEndpoint"].Value);
-            AWSProfileName = appSettings["AWSProfileName"].Value;
-            PipelineMaxTime = Convert.ToInt32(appSettings["PipelineMaxTime"].Value);
-            PipelinePollingDelay = Convert.ToInt32(appSettings["PipelinePollingDelay"].Value);
-            UserAWSCredentials = GetAWSCredentials();
-            PipelineId = appSettings["PipelineId"].Value;
-        }
+        public static RegionEndpoint RegionEndpoint { get; set; }
+
+        /// <summary>
+        /// The AWS Credentials for the test account
+        /// </summary>
+        public static AWSCredentials UserAWSCredentials { get; set; }
+
+        /// <summary>
+        /// The configuration for the data pipeline
+        /// </summary>
+        public static AmazonDataPipelineConfig PipelineConfig { get; set; }
+
+        /// <summary>
+        /// The Id of the pipeline
+        /// </summary>
+        public static string PipelineId { get; set; }
+
+        /// <summary>
+        /// The polling delay for the pipeline
+        /// </summary>
+        public static int PipelinePollingDelay { get; set; }
+
+        /// <summary>
+        /// The maximum time to hold the pipeline open
+        /// </summary>
+        public static int PipelineMaxTime { get; set; }
 
         /// <summary>
         /// Gets the Pipeline Client set in the App.config file
@@ -74,6 +58,7 @@ namespace AWSome.Piping.Config
         /// <summary>
         /// Gets the Pipeline Client set in the App.config file
         /// </summary>
+        /// <param name="regionEndpoint">The region endpoint for the pipeline</param>
         /// <returns>The Pipeline Client as configured</returns>
         public static AmazonDataPipelineClient GetPipelineClient(RegionEndpoint regionEndpoint)
         {
@@ -83,12 +68,17 @@ namespace AWSome.Piping.Config
         /// <summary>
         /// Gets the Pipeline Client set in the App.config file
         /// </summary>
+        /// <param name="amazonDataPipelineConfig"></param>
         /// <returns>The Kinesis Pipeline as configured</returns>
         public static AmazonDataPipelineClient GetPipelineClient(AmazonDataPipelineConfig amazonDataPipelineConfig)
         {
             return new AmazonDataPipelineClient(UserAWSCredentials, amazonDataPipelineConfig);
         }
 
+        /// <summary>
+        /// Gets the user's AWS Credentials from their Credential Profile Store Chain
+        /// </summary>
+        /// <returns>The AWS Credentials</returns>
         public static AWSCredentials GetAWSCredentials()
         {
             CredentialProfileStoreChain profileStoreChain = new CredentialProfileStoreChain();

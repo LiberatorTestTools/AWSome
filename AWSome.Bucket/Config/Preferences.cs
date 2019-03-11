@@ -2,32 +2,38 @@
 using Amazon.Runtime;
 using Amazon.Runtime.CredentialManagement;
 using Amazon.S3;
-using System.Collections.Specialized;
-using System.Configuration;
 
-namespace AWSome.Bucket.Config
+namespace Liberator.AWSome.Bucket.Config
 {
+    /// <summary>
+    /// The preferences for the AWSome Bucket
+    /// </summary>
     public class Preferences
     {
-        public static NameValueCollection appSettings = ConfigurationManager.AppSettings;
+        /// <summary>
+        /// The credentials for the current user
+        /// </summary>
         public static AWSCredentials UserAWSCredentials { get; set; }
-        public static RegionEndpoint RegionEndpoint { get; set; }
-
-        public static string ProfileName { get; set; }
-        public static string ProfileLocation { get; set; }
 
         /// <summary>
-        /// Sets the Preferences based on the configuration file
+        /// The region for the S3 Bucket
         /// </summary>
-        public Preferences()
-        {
-        }
+        public static RegionEndpoint RegionEndpoint { get; set; }
 
+        /// <summary>
+        /// The name of the profile for which the bucket exists
+        /// </summary>
+        public static string ProfileName { get; set; }
 
-        // <summary>
-        // Gets the DynamoDB Client set in the App.config file
-        // </summary>
-        // <returns>The Dynamo DB Client as configured</returns>
+        /// <summary>
+        /// The location of the profile
+        /// </summary>
+        public static string ProfileLocation { get; set; }
+        
+        /// <summary>
+        /// Gets the Amazon S3 Client set in the App.config file
+        /// </summary>
+        /// <returns>The Amazon S3 Client as configured</returns>
         public static IAmazonS3 GetAmazonS3Client()
         {
             UserAWSCredentials = GetAWSCredentials();
