@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace Liberator.AWSome.Bucket.Client
 {
@@ -24,8 +25,9 @@ namespace Liberator.AWSome.Bucket.Client
             {
                 try
                 {
-                    ListBucketsResponse response = s3Client.ListBuckets();
-                    List<S3Bucket> buckets = response.Buckets;
+                    Task<ListBucketsResponse> response = s3Client.ListBucketsAsync();
+                    response.Wait();
+                    List<S3Bucket> buckets = response.Result.Buckets;
                     return buckets;
                 }
                 catch (AmazonS3Exception e)
@@ -52,7 +54,9 @@ namespace Liberator.AWSome.Bucket.Client
                 using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
                 {
                     CopyObjectRequest copyObjectRequest = PopulateCopyObjectRequest(sourceBucket, sourceKey, sourceVersionId, destinationBucket, destinationKey);
-                    return s3Client.CopyObject(copyObjectRequest);
+                    Task<CopyObjectResponse> copyObjectResponse = s3Client.CopyObjectAsync(copyObjectRequest);
+                    copyObjectResponse.Wait();
+                    return copyObjectResponse.Result;
                 }
             }
             catch (AmazonS3Exception e)
@@ -73,7 +77,9 @@ namespace Liberator.AWSome.Bucket.Client
             {
                 using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
                 {
-                    return s3Client.CopyObject(copyObjectRequest);
+                    Task<CopyObjectResponse> copyObjectResponse = s3Client.CopyObjectAsync(copyObjectRequest);
+                    copyObjectResponse.Wait();
+                    return copyObjectResponse.Result;
                 }
             }
             catch (AmazonS3Exception e)
@@ -100,7 +106,9 @@ namespace Liberator.AWSome.Bucket.Client
                 using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
                 {
                     PutBucketRequest putBucketRequest = PopulatePutBucketRequest(newBucketName, s3Region, s3CannedACL, s3Grants);
-                    return s3Client.PutBucket(putBucketRequest);
+                    Task<PutBucketResponse> putObjectResponse = s3Client.PutBucketAsync(putBucketRequest);
+                    putObjectResponse.Wait();
+                    return putObjectResponse.Result;
                 }
             }
             catch (AmazonS3Exception e)
@@ -121,7 +129,9 @@ namespace Liberator.AWSome.Bucket.Client
             {
                 using (IAmazonS3 s3Client = Preferences.GetAmazonS3Client())
                 {
-                    return s3Client.PutBucket(putBucketRequest);
+                    Task<PutBucketResponse> putBucketResponse = s3Client.PutBucketAsync(putBucketRequest);
+                    putBucketResponse.Wait();
+                    return putBucketResponse.Result;
                 }
             }
             catch (AmazonS3Exception e)
@@ -145,7 +155,9 @@ namespace Liberator.AWSome.Bucket.Client
                 {
                     string folderKey = string.Concat(folderName, "/");
                     PutObjectRequest folderRequest = PopulatePutObjectRequest(bucketName, null, null, folderKey, null, stream: new MemoryStream(new byte[0]));
-                    return s3Client.PutObject(folderRequest);
+                    Task<PutObjectResponse> task = s3Client.PutObjectAsync(folderRequest);
+                    task.Wait();
+                    return task.Result;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -168,8 +180,10 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     ListObjectsRequest findFolderRequest = PopulateListObjectsRequest(bucketName, "/", folderPath);
-                    ListObjectsResponse findFolderResponse = s3Client.ListObjects(findFolderRequest);
-                    List<string> commonPrefixes = findFolderResponse.CommonPrefixes;
+                    
+                    Task<ListObjectsResponse> findFolderResponse = s3Client.ListObjectsAsync(findFolderRequest);
+                    findFolderResponse.Wait();
+                    List<string> commonPrefixes = findFolderResponse.Result.CommonPrefixes;
                     return commonPrefixes.Any();
                 }
                 catch (AmazonS3Exception e)
@@ -197,7 +211,9 @@ namespace Liberator.AWSome.Bucket.Client
                 {
                     PutObjectRequest putObjectRequest = PopulatePutObjectRequest(bucketName, null, contents, filename.Name, null);
                     putObjectRequest.Metadata.Add("type", "log");
-                    return s3Client.PutObject(putObjectRequest);
+                    Task<PutObjectResponse> putObjectResponse = s3Client.PutObjectAsync(putObjectRequest);
+                    putObjectResponse.Wait();
+                    return putObjectResponse.Result;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -219,8 +235,9 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     ListObjectsRequest listObjectsRequest = PopulateListObjectsRequest(bucketName, null);
-                    ListObjectsResponse listObjectsResponse = s3Client.ListObjects(listObjectsRequest);
-                    return listObjectsResponse.S3Objects;
+                    Task<ListObjectsResponse> listObjectsResponse = s3Client.ListObjectsAsync(listObjectsRequest);
+                    listObjectsResponse.Wait();
+                    return listObjectsResponse.Result.S3Objects;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -243,8 +260,9 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     ListObjectsRequest listObjectsRequest = PopulateListObjectsRequest(bucketName, null, pathToFolder);
-                    ListObjectsResponse listObjectsResponse = s3Client.ListObjects(listObjectsRequest);
-                    return listObjectsResponse.S3Objects;
+                    Task<ListObjectsResponse> listObjectsResponse = s3Client.ListObjectsAsync(listObjectsRequest);
+                    listObjectsResponse.Wait();
+                    return listObjectsResponse.Result.S3Objects;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -271,7 +289,9 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     PutObjectRequest putObjectRequest = PopulatePutObjectRequest(string.Concat(bucketName, delimiter, folderName), filePath, contents, filename.Name, null);
-                    return s3Client.PutObject(putObjectRequest);
+                    Task<PutObjectResponse> putObjectResponse = s3Client.PutObjectAsync(putObjectRequest);
+                    putObjectResponse.Wait();
+                    return putObjectResponse.Result;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -293,7 +313,9 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     DeleteObjectRequest deleteObjectRequest = PopulateDeleteObjectRequest(bucketName, filePath);
-                    return s3Client.DeleteObject(deleteObjectRequest);
+                    Task<DeleteObjectResponse> deleteObjectResponse = s3Client.DeleteObjectAsync(deleteObjectRequest);
+                    deleteObjectResponse.Wait();
+                    return deleteObjectResponse.Result;
                 }
                 catch (AmazonS3Exception e)
                 {
@@ -317,7 +339,9 @@ namespace Liberator.AWSome.Bucket.Client
                 try
                 {
                     DeleteObjectRequest deleteFolderRequest = PopulateDeleteObjectRequest(bucketName, string.Concat(folderName, delimiter, subFolder, delimiter));
-                    return s3Client.DeleteObject(deleteFolderRequest);
+                    Task<DeleteObjectResponse> deleteObjectResponse = s3Client.DeleteObjectAsync(deleteFolderRequest);
+                    deleteObjectResponse.Wait();
+                    return deleteObjectResponse.Result;
                 }
                 catch (AmazonS3Exception e)
                 {

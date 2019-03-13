@@ -46,7 +46,8 @@ namespace Liberator.AWSome.Dynamite.Client
             using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 Table table = Table.LoadTable(client, tableName);
-                table.PutItem(ObjectReference.GetDocument());
+                Task<Document> putItemResponse = table.PutItemAsync(ObjectReference.GetDocument());
+                putItemResponse.Wait();
             }
         }
 
@@ -97,7 +98,9 @@ namespace Liberator.AWSome.Dynamite.Client
 
                 }
 
-                documents = search.GetRemaining();
+                Task<List<Document>> documentsTask = search.GetRemainingAsync();
+                documentsTask.Wait();
+                documents = documentsTask.Result;
                 Type type = typeof(TObject);
 
                 foreach (Document keyValuePairs in documents)
@@ -175,7 +178,9 @@ namespace Liberator.AWSome.Dynamite.Client
                     attributesToGet.Add(sortkey);
                 }
 
-                ScanResponse scanResponse = client.Scan(tableName, attributesToGet);
+                Task<ScanResponse> scanResponseTask = client.ScanAsync(tableName, attributesToGet);
+                scanResponseTask.Wait();
+                ScanResponse scanResponse = scanResponseTask.Result;
 
                 if (scanResponse.Items.Count > 0)
                 {

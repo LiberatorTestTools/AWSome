@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liberator.AWSome.ECStraordinary</name>
+    </assembly>
+    <members>
+        <member name="T:Liberator.AWSome.ECStraordinary.Client.ECSConnector">
+            <summary>
+            The connector for the Amazon Elastic Container Service
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateRunTaskRequest(System.String,System.String,System.String,Amazon.ECS.LaunchType,Amazon.ECS.Model.NetworkConfiguration,Amazon.ECS.Model.TaskOverride,System.Collections.Generic.List{Amazon.ECS.Model.PlacementConstraint},System.Collections.Generic.List{Amazon.ECS.Model.PlacementStrategy},System.String,Amazon.ECS.PropagateTags,System.String,System.Collections.Generic.List{Amazon.ECS.Model.Tag},System.Int32,System.Boolean)">
+            <summary>
+            Creates a RunTaskRequest
+            </summary>
+            <param name="clusterName">The name of the cluster on which to run your task</param>
+            <param name="groupName">The name of the task group to associate with the task</param>
+            <param name="launchType">The launch type on which to run your task</param>
+            <param name="networkConfiguration">The network configuration for the task. This parameter is required for task definitions that use the awsvpc network mode to receive their own elastic network interface, and it is not supported for other network modes.</param>
+            <param name="taskOverride">A list of container overrides in JSON that specify the name of the container and the overrides it should receive</param>
+            <param name="placementConstraints">An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at runtime).</param>
+            <param name="placementStrategy">The placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task.</param>
+            <param name="platformVersion">The platform version the task should run. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the LATEST platform version is used by default.</param>
+            <param name="propagateTags">Specifies whether to propogate the tags from the task definition or the service to the task.  If no value is specified, the tags are not propagated.</param>
+            <param name="startedBy">An optional tag specified when a task is started</param>
+            <param name="tags">A list of tags to associate with the task</param>
+            <param name="taskDefinition">The family and revision (family:revision) or full ARN of the task definition to run</param>
+            <param name="noOfInstantiations">The number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks per call.</param>
+            <param name="enableECSManagedTags">Specifies whether to enable Amazon ECS Managed tags for the task</param>
+            <returns>A new RunTaskRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDescribeClustersRequest(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a DescribeClustersRequest
+            </summary>
+            <param name="clusters">A list of up to 100 cluster names or ARNs</param>
+            <param name="include">Additional information about your clusters to be separated by launch type e.g. runningEC2TasksCount</param>
+            <returns>A new DescribeClustersRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateCreateClusterRequest(System.String,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Creates a CreateClusterRequest
+            </summary>
+            <param name="clusterName">The name of your cluster</param>
+            <param name="tags">A list of tags to associate with the cluster</param>
+            <returns>A new CreateClusterRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDeleteClusterRequest(System.String)">
+            <summary>
+            Creates a DeleteClusterRequest
+            </summary>
+            <param name="clusterName"></param>
+            <returns>A new DeleteClusterRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateCreateServiceRequest(System.String,System.String,Amazon.ECS.Model.DeploymentController,System.String,Amazon.ECS.LaunchType,System.String,Amazon.ECS.SchedulingStrategy,System.Collections.Generic.List{Amazon.ECS.Model.ServiceRegistry},System.String,System.Collections.Generic.List{Amazon.ECS.Model.PlacementConstraint},System.Collections.Generic.List{Amazon.ECS.Model.PlacementStrategy},Amazon.ECS.Model.DeploymentConfiguration,System.Collections.Generic.List{Amazon.ECS.Model.LoadBalancer},System.String,Amazon.ECS.PropagateTags,System.Collections.Generic.List{Amazon.ECS.Model.Tag},Amazon.ECS.Model.NetworkConfiguration,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Creates a CreateServiceRequest
+            </summary>
+            <param name="clientToken">Unique, case-sensitive identifier that you provide to ensure the idempotency of the request</param>
+            <param name="clusterName">The name of your cluster</param>
+            <param name="deploymentController">The deployment controller to use for the service.</param>
+            <param name="serviceName">The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a Region or across multiple Regions.</param>
+            <param name="launchType">The launch type on which to run your service. </param>
+            <param name="networkConfiguration">The network configuration for the service. </param>
+            <param name="role">The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. </param>
+            <param name="schedulingStrategy">The scheduling strategy to use for the service. For more information, see Services.</param>
+            <param name="serviceRegistries">The details of the service discovery registries to assign to this service.</param>
+            <param name="taskDefinition"></param>
+            <param name="placementConstraints">An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task.</param>
+            <param name="placementStrategy">The placement strategy objects to use for tasks in your service. You can specify a maximum of five strategy rules per service.</param>
+            <param name="deploymentConfiguration"></param>
+            <param name="loadBalancers">A load balancer object representing the load balancer to use with your service. If the service is using the ECS deployment controller, you are limited to one load balancer or target group.</param>
+            <param name="platformVersion">The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the LATEST platform version is used by default. </param>
+            <param name="propagateTags">Specifies whether to propagate the tags from the task definition or the service to the tasks. If no value is specified, the tags are not propagated. </param>
+            <param name="tags">A list of tags to associate with the service</param>
+            <param name="enableECSManagedTags">Specifies whether to enable Amazon ECS managed tags for the tasks within the service. </param>
+            <param name="healthCheckGracePeriodSeconds">The period of time, in seconds, that the Amazon ECS service scheduler should ignore unhealthy Elastic Load Balancing target health checks after a task has first started. This is only valid if your service is configured to use a load balancer. Default is set to 60 seconds.</param>
+            <param name="desiredCount">The number of instantiations of the specified task definition to place and keep running on your cluster.</param>
+            <returns>A new CreateServiceRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDeleteServiceRequest(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a DeleteServiceRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. </param>
+            <param name="serviceName">The name of the service to delete.</param>
+            <param name="force">If true, allows you to delete a service even if it has not been scaled down to zero tasks. It is only necessary to use this if the service is using the REPLICA scheduling strategy.</param>
+            <returns>A new DeleteServiceRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDeregisterContainerInstanceRequest(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a DeregisterContainerInstanceRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister.</param>
+            <param name="containerInstance">The container instance ID or full ARN of the container instance to deregister. </param>
+            <param name="force">Forces the deregistration of the container instance. The default is set to false.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDeregisterTaskDefinitionRequest(System.String)">
+            <summary>
+            Creates a DeregisterTaskDefinitionRequest
+            </summary>
+            <param name="taskDefinition">The family and revision (family:revision) or full Amazon Resource Name (ARN) of the task definition to deregister. You must specify a revision.</param>
+            <returns>A new DeregisterTaskDefinitionRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDescribeContainerInstancesRequest(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a DescribeContainerInstancesRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe.</param>
+            <param name="containerInstances">A list of up to 100 container instance IDs or full Amazon Resource Name (ARN) entries.</param>
+            <param name="include">Specifies whether you want to see the resource tags for the container instance. If TAGS is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.</param>
+            <returns>A new DescribeContainerInstancesRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDescribeServicesRequest(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a DescribeServicesRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. </param>
+            <param name="services">A list of services to describe. You may specify up to 10 services to describe in a single operation.</param>
+            <param name="include">Specifies whether you want to see the resource tags for the service. If TAGS is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.</param>
+            <returns>A new DescribeServicesRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDescribeTaskDefinitionRequest(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a DescribeTaskDefinitionRequest
+            </summary>
+            <param name="taskDefinition">The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.</param>
+            <param name="include">Specifies whether to see the resource tags for the task definition. If TAGS is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.</param>
+            <returns>A new DescribeTaskDefinitionRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateDescribeTasksRequest(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a DescribeTasksRequest
+            </summary>
+            <param name="clusterName">The name of your cluster</param>
+            <param name="tasks">A list of up to 100 task IDs or ARNs</param>
+            <param name="include">Additional information about your clusters to be separated by launch type e.g. runningEC2TasksCount</param>
+            <returns>A new DescribeTasksRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateStartTaskRequest(System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{Amazon.ECS.Model.Tag},Amazon.ECS.Model.NetworkConfiguration,System.String,Amazon.ECS.Model.TaskOverride,Amazon.ECS.PropagateTags,System.String,System.Boolean)">
+            <summary>
+            Creates a StartTaskRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN) of the cluster on which to start your task. </param>
+            <param name="containerInstances">The container instance IDs or full ARN entries for the container instances on which you would like to place your task. You can specify up to 10 container instances.</param>
+            <param name="groupName">The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).</param>
+            <param name="tags">A list of tags to associate with the task</param>
+            <param name="networkConfiguration">The VPC subnet and security group configuration for tasks that receive their own elastic network interface by using the awsvpc networking mode.</param>
+            <param name="taskDefinition">The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.</param>
+            <param name="taskOverride">A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. </param>
+            <param name="propagateTags">Specifies whether to propagate the tags from the task definition or the service to the task. If no value is specified, the tags are not propagated.</param>
+            <param name="startedBy">An optional tag specified when a task is started. For example, if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the startedBy parameter. </param>
+            <param name="enableECSManagedTags">Specifies whether to enable Amazon ECS managed tags for the task. Default set to true.</param>
+            <returns>A new StartTaskRequest</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateStopTaskRequest(System.String,System.String,System.String)">
+            <summary>
+            Creates a StopTaskRequest
+            </summary>
+            <param name="clusterName">The short name or full Amazon Resource Name (ARN) of the cluster on which to start your task. </param>
+            <param name="reason">An optional message specified when a task is stopped. </param>
+            <param name="task">The task ID or full ARN entry of the task to stop.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.PopulateTagResourceRequest(System.String,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Creates a TagResourceRequest
+            </summary>
+            <param name="resourceArn">The Amazon Resource Name (ARN) of the resource to which to add tags. </param>
+            <param name="tags">The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Liberator.AWSome.ECStraordinary.Client.ECSConnector.UserAWSCredentials">
+            <summary>
+            The credentials for the current user
+            </summary>
+        </member>
+        <member name="F:Liberator.AWSome.ECStraordinary.Client.ECSConnector.ECSConfig">
+            <summary>
+            The configuration for the Elastic Container Service
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.RunTask(Amazon.ECS.Model.RunTaskRequest,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Runs a task on an ECS cluster
+            </summary>
+            <param name="runTaskRequest">Request used to run the task</param>
+            <param name="tags">tags associated with task</param>
+            <returns>The run task response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.ListECSClusters(Amazon.ECS.Model.DescribeClustersRequest)">
+            <summary>
+            Lists the Clusters found on the client
+            </summary>
+            <param name="describeClustersRequest">Request sent to get a list of clusters and their properties</param>
+            <returns>A list of Clusters found on the client</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.CreateNewCluster(Amazon.ECS.Model.CreateClusterRequest,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Creates a new cluster
+            </summary>
+            <param name="createClustersRequest">Request sent to create a new cluster</param>
+            <param name="tags">tags associated with task</param>
+            <returns>The Cluster that has been created</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.ListClusterTasks(Amazon.ECS.Model.DescribeTasksRequest)">
+            <summary>
+            Lists the tasks found on the cluster
+            </summary>
+            <param name="describsTasksRequest">Request sent to get a list of tasks and their properties</param>
+            <returns>List of tasks</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.CreateService(Amazon.ECS.Model.CreateServiceRequest,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Creates a new service for the cluster
+            </summary>
+            <param name="createServiceRequest">Request sent to create a service</param>
+            <param name="tags">tags associated with task</param>
+            <returns>The create service response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.DeleteCluster(Amazon.ECS.Model.DeleteClusterRequest)">
+            <summary>
+            Deletes a cluster
+            </summary>
+            <param name="deleteClusterRequest">Request to delete a cluster</param>
+            <returns>The delete cluster response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.DeleteService(Amazon.ECS.Model.DeleteServiceRequest)">
+            <summary>
+            Deletes a service from a cluster
+            </summary>
+            <param name="deleteServiceRequest">Request to delete a service</param>
+            <returns>The delete service response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.DeregisterContainerInstance(Amazon.ECS.Model.DeregisterContainerInstanceRequest)">
+            <summary>
+            Deregisters a container instance
+            </summary>
+            <param name="deregisterContainerInstanceRequest">Request to deregister a container instance</param>
+            <returns>The deregister container instance response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.DeregisterTaskDefinition(Amazon.ECS.Model.DeregisterTaskDefinitionRequest)">
+            <summary>
+            Deregisters a task definition
+            </summary>
+            <param name="deregisterTaskDefinitionRequest">Request to deregister a task definition</param>
+            <returns>The deregister task definition resposne</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.ListContainerInstances(Amazon.ECS.Model.DescribeContainerInstancesRequest)">
+            <summary>
+            Lists the container instances
+            </summary>
+            <param name="describeContainerInstancesRequest">A request to get the list of container instances</param>
+            <returns>A list of container instances</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.GetTaskDefinition(Amazon.ECS.Model.DescribeTaskDefinitionRequest)">
+            <summary>
+            Gets the task definition
+            </summary>
+            <param name="describeTaskDefinitionRequest">Request to get a task definition</param>
+            <returns>The describe task definition response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.DescribeServices(Amazon.ECS.Model.DescribeServicesRequest)">
+            <summary>
+            Gets the description of services
+            </summary>
+            <param name="describeServicesRequest">Request to describe the services</param>
+            <returns>The describe service response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.StartTask(Amazon.ECS.Model.StartTaskRequest)">
+            <summary>
+            Starts a task
+            </summary>
+            <param name="startTaskRequest">Request to start a task</param>
+            <returns>The start task response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.StopTask(Amazon.ECS.Model.StopTaskRequest)">
+            <summary>
+            Stopping a task
+            </summary>
+            <param name="stopTaskRequest">Request to stop a task</param>
+            <returns>A stop task response</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Client.ECSConnector.TagResource(Amazon.ECS.Model.TagResourceRequest,System.Collections.Generic.List{Amazon.ECS.Model.Tag})">
+            <summary>
+            Tags a resource
+            </summary>
+            <param name="tagResourceRequest">Request to tag a resource</param>
+            <param name="tags">List of tags</param>
+            <returns>A tag resource response</returns>
+        </member>
+        <member name="T:Liberator.AWSome.ECStraordinary.Config.ECSeption">
+            <summary>
+            An ECStraordinary exception has been thrown
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Config.ECSeption.#ctor(System.String,Amazon.ECS.AmazonECSException)">
+            <summary>
+            An ECStraordinary exception has been thrown
+            </summary>
+            <param name="message">The message for the ECSeption</param>
+            <param name="exception">The underlying AmazonECSException</param>
+        </member>
+        <member name="T:Liberator.AWSome.ECStraordinary.Config.Preferences">
+            <summary>
+            The preferences for the Elastic Container Service
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.ECStraordinary.Config.Preferences.UserAWSCredentials">
+            <summary>
+            The credentials for the current user
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.ECStraordinary.Config.Preferences.RegionEndpoint">
+            <summary>
+            The region for the Elastic Container Service
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.ECStraordinary.Config.Preferences.ProfileName">
+            <summary>
+            The name for
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.ECStraordinary.Config.Preferences.ProfileLocation">
+            <summary>
+            The location for the current profile
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Config.Preferences.#ctor">
+            <summary>
+            Sets the Preferences based on the configuration file
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Config.Preferences.GetECSClient">
+            <summary>
+            Gets the ECS Client set in the App.config file
+            </summary>
+            <returns>The ECS Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Config.Preferences.GetAWSCredentials">
+            <summary>
+            Gets the credentials from the credential store chane
+            </summary>
+            <returns>An object representing the credentials</returns>
+        </member>
+        <member name="M:Liberator.AWSome.ECStraordinary.Config.Preferences.GetECSConfig">
+            <summary>
+            Gets the ECS configuration
+            </summary>
+            <returns>The ECS configuration</returns>
+        </member>
+    </members>
+</doc>

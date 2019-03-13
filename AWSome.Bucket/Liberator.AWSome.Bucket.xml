@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liberator.AWSome.Bucket</name>
+    </assembly>
+    <members>
+        <member name="T:Liberator.AWSome.Bucket.Client.Connector">
+            <summary>
+            Connector for to S3 buckets.
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulateCopyObjectRequest(System.String,System.String,System.String,System.String,System.String,Amazon.S3.S3StorageClass,Amazon.S3.S3CannedACL,System.Collections.Generic.List{Amazon.S3.Model.S3Grant},Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a CopyObjectRequest.
+            </summary>
+            <param name="sourceBucket">The name of the bucket containing the object to copy.</param>
+            <param name="sourceKey">The key of the object to copy.</param>
+            <param name="sourceVersionId">Specifies a particular version of the source object to copy. By default the latest version is copied.</param>
+            <param name="destinationBucket">The name of the bucket to contain the copy of the source object.</param>
+            <param name="destinationKey">The key to be given to the copy of the source object.</param>
+            <param name="s3StorageClas">The type of storage to use for the object. Defaults to 'STANDARD'.</param>
+            <param name="s3CannedACL">A canned access control list (CACL) to apply to the object.</param>
+            <param name="s3Grants">Gets the access control lists (ACLs) for this request.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.
+            Bucket owners need not specify this parameter in their requests.</param>
+            <returns>A request object to be used when copying objects</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulateDeleteBucketRequest(System.String,Amazon.S3.S3Region)">
+            <summary>
+            Creates a DeleteBucketRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="s3Region">The S3 region which contains the object</param>
+            <returns>A request to be used when deleting buckets.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulateDeleteObjectRequest(System.String,System.String)">
+            <summary>
+            Creates a DeleteObjectRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="objectKey">The key identifying the object to delete.</param>
+            <returns>A request to be used when deleting objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulateDeleteObjectsRequest(System.String,System.Collections.Generic.List{Amazon.S3.Model.KeyVersion},Amazon.S3.Model.MfaCodes,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a DeleteObjectsRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="keyVersions">The list of object keys to delete.</param>
+            <param name="mfaCodes">Used with multi factor authentication devices.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns>A request to be used when deleting objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.GetObjectMetadataRequest(System.String,System.String,System.String,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a GetObjectMetadataRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="key">The key of the object for which metadata is required.</param>
+            <param name="versionId">The specific version of the file.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns>A request to be used  to get object metadata.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.GetObjectRequest(System.String,System.String,System.String,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a GetObjectRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="key">The key of the object.</param>
+            <param name="versionId">The specific version of the file.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns>A request to be used  to get objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulateListObjectsRequest(System.String,System.String,System.String,System.Int32,Amazon.S3.EncodingType,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a ListObjectsRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="delimiter">Character used to group keys.</param>
+            <param name="prefix">Limits the response to keys that begin with the given prefix.</param>
+            <param name="maxKeys">Sets the maximum number of keys returned in the response.</param>
+            <param name="encoding">Asks amazon to encode the object keys.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns>A request to be used to list objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulatePutBucketRequest(System.String,Amazon.S3.S3Region,Amazon.S3.S3CannedACL,System.Collections.Generic.List{Amazon.S3.Model.S3Grant})">
+            <summary>
+            Creates a PutBucketRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="s3Region">The region locality for the bucket.</param>
+            <param name="s3CannedACL">The canned ACL to apply to the bucket</param>
+            <param name="s3Grants">Access control lists for this request.</param>
+            <returns>A request to be used to create a new bucket.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PopulatePutObjectRequest(System.String,System.String,System.String,System.String,System.String,Amazon.S3.S3CannedACL,Amazon.S3.S3StorageClass,System.IO.Stream,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a PutObjectRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="filePath">The full path of the file to be uploaded.</param>
+            <param name="contentBody">Text content to be uploaded.</param>
+            <param name="key">Used to identify the object.</param>
+            <param name="digest">An MD5 digest of the content.</param>
+            <param name="s3CannedACL">The canned ACL to apply to the bucke.t</param>
+            <param name="s3StorageClass">The type of storage to use for the object. Defaults to 'STANDARD'.</param>
+            <param name="stream">Input stream to be used.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns>A request to be used to create objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.RestoreObjectRequest(System.String,System.String,System.String,System.String,Amazon.S3.RequestPayer)">
+            <summary>
+            Creates a RestoreObjectRequest.
+            </summary>
+            <param name="bucketName">The name of the bucket containing the object.</param>
+            <param name="description"></param>
+            <param name="key">The key of the object for which restoration is required.</param>
+            <param name="versionId">The specific version of the file.</param>
+            <param name="requestPayer">Confirms that the requester knows that she or he will be charged for the list objects request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.GetListOfS3Buckets">
+            <summary>
+            Lists the S3 buckets found on the client.
+            </summary>
+            <returns>List of S3 bucket objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CopyObject(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Copies an object from one bucket to another.
+            </summary>
+            <param name="sourceBucket">The name of the bucket containing the object to copy.</param>
+            <param name="sourceKey">The key of the object to copy.</param>
+            <param name="sourceVersionId">Specifies a particular version of the source object to copy. By default the latest version is copied.</param>
+            <param name="destinationBucket">The name of the bucket to contain the copy of the source object.</param>
+            <param name="destinationKey">The key to be given to the copy of the source object.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CopyObject(Amazon.S3.Model.CopyObjectRequest)">
+            <summary>
+            Copies an object from one bucket to another.
+            </summary>
+            <param name="copyObjectRequest">A request object detailing the S3 object to copy.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CreateS3Bucket(System.String,Amazon.S3.S3Region,System.String,Amazon.S3.S3CannedACL,System.Collections.Generic.List{Amazon.S3.Model.S3Grant})">
+            <summary>
+            Creates a new bucket on the client.
+            </summary>
+            <param name="newBucketName">The name of the new bucket to create.</param>
+            <param name="s3Region">[Optional] The S3 region to use.</param>
+            <param name="bucketRegionName">[Optional] The bucket region locality.</param>
+            <param name="s3CannedACL">[Optional] The canned access control list to apply to the request.</param>
+            <param name="s3Grants">[Optional] Gets the access control list.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CreateS3Bucket(Amazon.S3.Model.PutBucketRequest)">
+            <summary>
+            Creates a new bucket on the client.
+            </summary>
+            <param name="putBucketRequest">A request object detailing the S3 bucket to create.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CreateS3Folder(System.String,System.String)">
+            <summary>
+            Creates a folder within a named bucket.
+            </summary>
+            <param name="bucketName">The name of the bucket.</param>
+            <param name="folderName">The name of the new folder to create.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.CheckFolderExistsInS3Bucket(System.String,System.String)">
+            <summary>
+            Checks if a folder exists in a named S3 bucket.
+            </summary>
+            <param name="bucketName">The name of the bucket.</param>
+            <param name="folderPath">he nameof the folder to check for.</param>
+            <returns>True if the folder exists.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.PutFileInS3Bucket(System.String,System.String)">
+            <summary>
+            Adds a file to an S3 bucket.
+            </summary>
+            <param name="bucketName">The name of the bucket.</param>
+            <param name="filePath">The path to the file to upload.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.ListObjectsInS3Bucket(System.String)">
+            <summary>
+            List objects in a bucket to the console
+            </summary>
+            <param name="bucketName">The name of the bucket</param>
+            <returns>List of S3 bucket objects</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.ListObjectsInS3Folder(System.String,System.String)">
+            <summary>
+            Lists the objects in a named folder
+            </summary>
+            <param name="bucketName">The name of the bucket containing the folder.</param>
+            <param name="pathToFolder">The path to the folder to enumerate.</param>
+            <returns>List of S3 bucket objects.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.AddTextFileToS3Folder(System.String,System.String,System.String)">
+            <summary>
+            Adds a local file to the S3 bucket
+            </summary>
+            <param name="bucketName">The name of the bucket containing the folder</param>
+            <param name="folderName">The name of the folder to upload to</param>
+            <param name="filePath">The local oath to the file being uploaded</param>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.DeleteItemFromS3Bucket(System.String,System.String)">
+            <summary>
+            Deletes an item from an S3 bucket
+            </summary>
+            <param name="bucketName">The name of the bucket containing the item</param>
+            <param name="filePath">The path to the file to be deleted</param>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Client.Connector.DeleteSubFolderFromS3Bucket(System.String,System.String,System.String)">
+            <summary>
+            Deletes a subfolder from an S3 folder
+            </summary>
+            <param name="bucketName">The name of the bucket containing the folder</param>
+            <param name="folderName">The path of the folder</param>
+            <param name="subFolder">The name of the subfolder to delete</param>
+        </member>
+        <member name="T:Liberator.AWSome.Bucket.Config.BucketException">
+            <summary>
+            An exception has been thrown into a bucket
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Config.BucketException.#ctor(System.String,Amazon.S3.AmazonS3Exception)">
+            <summary>
+            There has been an exceptional bucket found
+            </summary>
+            <param name="message">The message sent by Bucket</param>
+            <param name="exception">The inner exception that was thrown</param>
+        </member>
+        <member name="T:Liberator.AWSome.Bucket.Config.Preferences">
+            <summary>
+            The preferences for the AWSome Bucket
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Bucket.Config.Preferences.UserAWSCredentials">
+            <summary>
+            The credentials for the current user
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Bucket.Config.Preferences.RegionEndpoint">
+            <summary>
+            The region for the S3 Bucket
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Bucket.Config.Preferences.ProfileName">
+            <summary>
+            The name of the profile for which the bucket exists
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Bucket.Config.Preferences.ProfileLocation">
+            <summary>
+            The location of the profile
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Config.Preferences.GetAmazonS3Client">
+            <summary>
+            Gets the Amazon S3 Client set in the App.config file
+            </summary>
+            <returns>The Amazon S3 Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Bucket.Config.Preferences.GetAWSCredentials">
+            <summary>
+            Gets the credentials from the credential store chane
+            </summary>
+            <returns>An object representing the credentials</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liberator.AWSome.Chatter</name>
+    </assembly>
+    <members>
+        <member name="T:Liberator.AWSome.Chatter.Config.Preferences">
+            <summary>
+            Preferences for Chatter
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Chatter.Config.Preferences.AWSProfileName">
+            <summary>
+            The name of the AWS profile
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Chatter.Config.Preferences.KinesisStreamName">
+            <summary>
+            The name of the kinesis stream
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Chatter.Config.Preferences.RegionEndpoint">
+            <summary>
+            The endpoint to be used for the stream
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Chatter.Config.Preferences.UserAWSCredentials">
+            <summary>
+            The AWS credentials for the user
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Config.Preferences.GetKinesisClient">
+            <summary>
+            Gets the Kinesis Client set in the App.config file
+            </summary>
+            <returns>The Kinesis Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Config.Preferences.GetKinesisClient(Amazon.RegionEndpoint)">
+            <summary>
+            Gets the Kinesis Client set in the App.config file
+            </summary>
+            <returns>The Kinesis Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Config.Preferences.GetKinesisClient(Amazon.Kinesis.AmazonKinesisConfig)">
+            <summary>
+            Gets the Kinesis Client set in the App.config file
+            </summary>
+            <returns>The Kinesis Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Config.Preferences.GetAWSCredentials">
+            <summary>
+            Gets the user's AWS Credentials
+            </summary>
+            <returns>The AWS Credentials for the user</returns>
+        </member>
+        <member name="T:Liberator.AWSome.Chatter.Objects.MessageObject">
+            <summary>
+            Abstract class to form the basis of Kinesis messages
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.Chatter.Objects.MessageObject.PartitionKey">
+            <summary>
+            The partition key for the Kinesis messages
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Objects.MessageObject.#ctor(System.String)">
+            <summary>
+            The message object being sent
+            </summary>
+            <param name="PartitionKey">The partition key to send with the message</param>
+        </member>
+        <member name="T:Liberator.AWSome.Chatter.Transactions.KinesisReceiver">
+            <summary>
+            Receiver for Kinesis messages
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Transactions.KinesisReceiver.GetRecordsFromKinesisQueue(System.DateTime)">
+            <summary>
+            Gets records from the Kinesis stream
+            </summary>
+            <returns>A list of records from the Kinesis stream</returns>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Transactions.KinesisReceiver.GetRecords(Amazon.Kinesis.AmazonKinesisClient,Amazon.Kinesis.Model.DescribeStreamResponse,System.DateTime)">
+            <summary>
+            Gets the records from the named stream
+            </summary>
+            <param name="kinesisClient">The Kinesis client object</param>
+            <param name="describeResponse">The stream response descriptor</param>
+            <param name="fromDateTime"></param>
+        </member>
+        <member name="M:Liberator.AWSome.Chatter.Transactions.KinesisReceiver.PopulateRecordsFromShards(Amazon.Kinesis.AmazonKinesisClient,Amazon.Kinesis.Model.GetShardIteratorRequest)">
+            <summary>
+            Populates record objects from shards
+            </summary>
+            <param name="kinesisClient">The Kinesis client object</param>
+            <param name="shardIteratorRequest"></param>
+        </member>
+    </members>
+</doc>

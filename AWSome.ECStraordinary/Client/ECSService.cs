@@ -40,11 +40,16 @@ namespace Liberator.AWSome.ECStraordinary.Client
                 {
                     if (tags != null)
                     {
-                        TagResourceRequest tagResourceRequest = new TagResourceRequest();
-                        tagResourceRequest.Tags = tags;
-                        ECSClient.TagResource(tagResourceRequest);
+                        TagResourceRequest tagResourceRequest = new TagResourceRequest
+                        {
+                            Tags = tags
+                        };
+                        Task<TagResourceResponse> task = ECSClient.TagResourceAsync(tagResourceRequest);
+                        task.Wait();
                     }
-                    return ECSClient.RunTask(runTaskRequest);
+                    Task<RunTaskResponse> runTask = ECSClient.RunTaskAsync(runTaskRequest);
+                    runTask.Wait();
+                    return runTask.Result;
                 }
                 catch (AmazonECSException e)
                 {
@@ -64,7 +69,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DescribeClustersResponse response = ECSClient.DescribeClusters(describeClustersRequest);
+                    Task<DescribeClustersResponse> task = ECSClient.DescribeClustersAsync(describeClustersRequest);
+                    task.Wait();
+                    DescribeClustersResponse response = task.Result;
                     List<Cluster> clusters = response.Clusters;
                     foreach (Cluster cluster in clusters)
                     {
@@ -95,7 +102,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
                     {
                         createClustersRequest.Tags = tags;
                     }
-                    CreateClusterResponse response = ECSClient.CreateCluster(createClustersRequest);
+                    Task<CreateClusterResponse> task = ECSClient.CreateClusterAsync(createClustersRequest);
+                    task.Wait();
+                    CreateClusterResponse response = task.Result;
                     Cluster cluster = response.Cluster;
                     return cluster;
                 }
@@ -117,7 +126,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DescribeTasksResponse response = ECSClient.DescribeTasks(describsTasksRequest);
+                    Task<DescribeTasksResponse> describeTask = ECSClient.DescribeTasksAsync(describsTasksRequest);
+                    describeTask.Wait();
+                    DescribeTasksResponse response = describeTask.Result;
                     List<Amazon.ECS.Model.Task> tasks = response.Tasks;
                     foreach (var task in tasks)
                     {
@@ -148,7 +159,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
                     {
                         createServiceRequest.Tags = tags;
                     }
-                    CreateServiceResponse response = ECSClient.CreateService(createServiceRequest);
+                    Task<CreateServiceResponse> task = ECSClient.CreateServiceAsync(createServiceRequest);
+                    task.Wait();
+                    CreateServiceResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -169,7 +182,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DeleteClusterResponse response = ECSClient.DeleteCluster(deleteClusterRequest);
+                    Task<DeleteClusterResponse> task = ECSClient.DeleteClusterAsync(deleteClusterRequest);
+                    task.Wait();
+                    DeleteClusterResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -190,7 +205,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DeleteServiceResponse response = ECSClient.DeleteService(deleteServiceRequest);
+                    Task<DeleteServiceResponse> task = ECSClient.DeleteServiceAsync(deleteServiceRequest);
+                    task.Wait();
+                    DeleteServiceResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -212,7 +229,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DeregisterContainerInstanceResponse response = ECSClient.DeregisterContainerInstance(deregisterContainerInstanceRequest);
+                    Task<DeregisterContainerInstanceResponse> task = ECSClient.DeregisterContainerInstanceAsync(deregisterContainerInstanceRequest);
+                    task.Wait();
+                    DeregisterContainerInstanceResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -235,7 +254,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DeregisterTaskDefinitionResponse response = ECSClient.DeregisterTaskDefinition(deregisterTaskDefinitionRequest);
+                    Task<DeregisterTaskDefinitionResponse> task = ECSClient.DeregisterTaskDefinitionAsync(deregisterTaskDefinitionRequest);
+                    task.Wait();
+                    DeregisterTaskDefinitionResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -257,7 +278,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DescribeContainerInstancesResponse response = ECSClient.DescribeContainerInstances(describeContainerInstancesRequest);
+                    Task<DescribeContainerInstancesResponse> task  = ECSClient.DescribeContainerInstancesAsync(describeContainerInstancesRequest);
+                    task.Wait();
+                    DescribeContainerInstancesResponse response = task.Result;
                     List<ContainerInstance> containerInstances = response.ContainerInstances;
                     foreach (var instance in containerInstances)
                     {
@@ -283,7 +306,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DescribeTaskDefinitionResponse response = ECSClient.DescribeTaskDefinition(describeTaskDefinitionRequest);
+                    Task<DescribeTaskDefinitionResponse> task = ECSClient.DescribeTaskDefinitionAsync(describeTaskDefinitionRequest);
+                    task.Wait();
+                    DescribeTaskDefinitionResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -305,7 +330,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    DescribeServicesResponse response = ECSClient.DescribeServices(describeServicesRequest);
+                    Task<DescribeServicesResponse> task = ECSClient.DescribeServicesAsync(describeServicesRequest);
+                    task.Wait();
+                    DescribeServicesResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -327,7 +354,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    StartTaskResponse response = ECSClient.StartTask(startTaskRequest);
+                    Task<StartTaskResponse> task = ECSClient.StartTaskAsync(startTaskRequest);
+                    task.Wait();
+                    StartTaskResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -349,7 +378,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    StopTaskResponse response = ECSClient.StopTask(stopTaskRequest);
+                    Task<StopTaskResponse> task = ECSClient.StopTaskAsync(stopTaskRequest);
+                    task.Wait();
+                    StopTaskResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
@@ -372,7 +403,9 @@ namespace Liberator.AWSome.ECStraordinary.Client
             {
                 try
                 {
-                    TagResourceResponse response = ECSClient.TagResource(tagResourceRequest);
+                    Task<TagResourceResponse> task = ECSClient.TagResourceAsync(tagResourceRequest);
+                    task.Wait();
+                    TagResourceResponse response = task.Result;
                     return response;
                 }
                 catch (AmazonECSException e)
