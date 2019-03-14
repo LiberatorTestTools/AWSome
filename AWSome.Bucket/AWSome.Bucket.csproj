@@ -19,6 +19,7 @@
     <AssemblyName>Liberator.AWSome.Bucket</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>.\RESTore.AWSome.Bucket.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">

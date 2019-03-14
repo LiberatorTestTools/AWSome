@@ -163,7 +163,7 @@ namespace Liberator.AWSome.Dynamite.Client
         /// </summary>
         /// <param name="tableName">Name of table to delete items from</param>
         /// <param name="keyName">Name of key which will be used to delete all items with it</param>
-        /// <param name="sortkey"></param>
+        /// <param name="sortkey">The key on which to sort.</param>
         public void DeleteAllItems(string tableName, string keyName, [Optional] string sortkey)
         {
             using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
