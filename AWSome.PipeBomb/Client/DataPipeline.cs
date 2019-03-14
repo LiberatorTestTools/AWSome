@@ -87,71 +87,12 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Activates a data pipeline
-        /// </summary>
-        /// <param name="activatePipelineRequest">The request object detailing the pipeline to activate</param>
-        /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse ActivatePipeline(ActivatePipelineRequest activatePipelineRequest, [Optional]List<Tag> tags)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    if (tags != null)
-                    {
-                        amazonDataPipelineClient.AddTags(activatePipelineRequest.PipelineId, tags);
-                    }
-                    return amazonDataPipelineClient.ActivatePipeline(activatePipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to activate the pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Activates a data pipeline
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to be used</param>
-        /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
-        /// <param name="parameterValues">[Optional] Parameters to pass to the pipeline on activation</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse ActivatePipeline(string pipelineId, [Optional, DefaultParameterValue(null)]List<Tag> tags,
-            [Optional, DefaultParameterValue(null)]List<Amazon.DataPipeline.Model.ParameterValue> parameterValues)
-        {
-            try
-            {
-                ActivatePipelineRequest activatePipelineRequest = null;
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    if (tags != null)
-                    {
-                        amazonDataPipelineClient.AddTags(pipelineId, tags);
-                    }
-
-                    activatePipelineRequest = PopulateActivateRequest(pipelineId, parameterValues);
-
-                    return amazonDataPipelineClient.ActivatePipeline(activatePipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to activate the pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
         /// Asynchronously activates a data pipeline
         /// </summary>
         /// <param name="activatePipelineRequest">The request object detailing the pipeline to activate</param>
         /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
         /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse ActivatePipelineAsync(ActivatePipelineRequest activatePipelineRequest, [Optional]List<Tag> tags)
+        public AmazonWebServiceResponse ActivatePipeline(ActivatePipelineRequest activatePipelineRequest, [Optional]List<Tag> tags)
         {
             try
             {
@@ -184,7 +125,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
         /// <param name="parameterValues">[Optional] Parameters to pass to the pipeline on activation</param>
         /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse ActivatePipelineAsync(string pipelineId, [Optional, DefaultParameterValue(null)]List<Tag> tags,
+        public AmazonWebServiceResponse ActivatePipeline(string pipelineId, [Optional, DefaultParameterValue(null)]List<Tag> tags,
             [Optional, DefaultParameterValue(null)]List<Amazon.DataPipeline.Model.ParameterValue> parameterValues)
         {
             try
@@ -214,65 +155,12 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Creates a data pipeline
-        /// </summary>
-        /// <param name="createPipelineRequest">The request object detailing the pipeline to create</param>
-        /// <param name="tags">Any tags to add to the pipeline</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse CreatePipeline(CreatePipelineRequest createPipelineRequest, [Optional, DefaultParameterValue(null)]List<Tag> tags)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    if (tags != null)
-                    {
-                        createPipelineRequest.Tags = tags;
-                    }
-                    return amazonDataPipelineClient.CreatePipeline(createPipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to create the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Creates a data pipeline
-        /// </summary>
-        /// <param name="uniqueId">Unique identifier set by the user</param>
-        /// <param name="name">The name of the pipeline</param>
-        /// <param name="description">A description of the pipeline</param>
-        /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse CreatePipeline(string uniqueId, string name, string description, [Optional]List<Tag> tags)
-        {
-            try
-            {
-                CreatePipelineRequest createPipelineRequest = null;
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    createPipelineRequest = PopulateCreateRequest(uniqueId, name, description, tags);
-                    return amazonDataPipelineClient.CreatePipeline(createPipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to create the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
         /// Asynchronously creates a data pipeline
         /// </summary>
         /// <param name="createPipelineRequest">The request object detailing the pipeline to create</param>
         /// <param name="tags">Any tags to add to the pipeline</param>
         /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse CreatePipelineAsync(CreatePipelineRequest createPipelineRequest, [Optional]List<Tag> tags)
+        public AmazonWebServiceResponse CreatePipeline(CreatePipelineRequest createPipelineRequest, [Optional]List<Tag> tags)
         {
             try
             {
@@ -298,7 +186,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="description">A description of the pipeline</param>
         /// <param name="tags">[Optional] Any tags to add to the pipeline</param>
         /// <returns></returns>
-        public AmazonWebServiceResponse CreatePipelineAsync(string uniqueId, string name, string description, [Optional]List<Tag> tags)
+        public AmazonWebServiceResponse CreatePipeline(string uniqueId, string name, string description, [Optional]List<Tag> tags)
         {
             try
             {
@@ -317,50 +205,7 @@ namespace Liberator.AWSome.PipeBomb.Client
             }
         }
 
-
-        /// <summary>
-        /// Deactivates a data pipeline
-        /// </summary>
-        /// <param name="deactivatePipelineRequest">The request object detailing the pipeline to deactivate</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse DeactivatePipeline(DeactivatePipelineRequest deactivatePipelineRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.DeactivatePipeline(deactivatePipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Deactivates a data pipeline
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to be used</param>
-        /// <param name="cancelActive">Whether to cancel any currently running objects</param>
-        /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse DeactivatePipeline(string pipelineId, bool cancelActive)
-        {
-            try
-            {
-                DeactivatePipelineRequest deactivatePipelineRequest = PopulateDeactivateRequest(pipelineId, cancelActive);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.DeactivatePipeline(deactivatePipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to deactivate the requested pipeline.", e);
-            }
-        }
+        
 
 
         /// <summary>
@@ -368,7 +213,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// </summary>
         /// <param name="deactivatePipelineRequest">The request object detailing the pipeline to deactivate</param>
         /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse DeactivatePipelineAsync(DeactivatePipelineRequest deactivatePipelineRequest)
+        public AmazonWebServiceResponse DeactivatePipeline(DeactivatePipelineRequest deactivatePipelineRequest)
         {
             try
             {
@@ -392,7 +237,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="pipelineId">The Id of the pipeline to be used</param>
         /// <param name="cancelActive">Whether to cancel any currently running objects</param>
         /// <returns>The response returned from the server</returns>
-        public AmazonWebServiceResponse DeactivatePipelineAsync(string pipelineId, bool cancelActive)
+        public AmazonWebServiceResponse DeactivatePipeline(string pipelineId, bool cancelActive)
         {
             try
             {
@@ -412,7 +257,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Deletes a data pipeline.
+        /// Asynchronously deletes a data pipeline.
         /// </summary>
         /// <param name="deletePipelineRequest">The request object detailing the pipeline to delete.</param>
         /// <returns>The response returned from the server.</returns>
@@ -422,19 +267,20 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.DeletePipeline(deletePipelineRequest);
+                    Task<DeletePipelineResponse> deletePipelineResponse = amazonDataPipelineClient.DeletePipelineAsync(deletePipelineRequest);
+                    deletePipelineResponse.Wait();
+                    return deletePipelineResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
             {
-
                 throw new PipeBombException("Unable to delete the requested pipeline.", e);
             }
         }
 
 
         /// <summary>
-        /// Deletes a data pipeline.
+        /// Asynchronously deletes a data pipeline.
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline to delete.</param>
         /// <returns>The response returned from the server.</returns>
@@ -445,28 +291,6 @@ namespace Liberator.AWSome.PipeBomb.Client
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
                     DeletePipelineRequest deletePipelineRequest = PopulateDeleteRequest(pipelineId);
-                    return amazonDataPipelineClient.DeletePipeline(deletePipelineRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-
-                throw new PipeBombException("Unable to delete the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously deletes a data pipeline.
-        /// </summary>
-        /// <param name="deletePipelineRequest">The request object detailing the pipeline to delete.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DeletePipelineAsync(DeletePipelineRequest deletePipelineRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<DeletePipelineResponse> deletePipelineResponse = amazonDataPipelineClient.DeletePipelineAsync(deletePipelineRequest);
                     deletePipelineResponse.Wait();
                     return deletePipelineResponse.Result;
@@ -480,31 +304,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Asynchronously deletes a data pipeline.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to delete.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DeletePipelineAsync(string pipelineId)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    DeletePipelineRequest deletePipelineRequest = PopulateDeleteRequest(pipelineId);
-                    Task<DeletePipelineResponse> deletePipelineResponse = amazonDataPipelineClient.DeletePipelineAsync(deletePipelineRequest);
-                    deletePipelineResponse.Wait();
-                    return deletePipelineResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to delete the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Gets the object definitions for objects found using the request.
+        /// Asynchronously gets the object definitions for objects found using the request.
         /// </summary>
         /// <param name="describeObjectsRequest">The request detailing the objects associated with a pipeline to describe.</param>
         /// <returns>The response returned from the server.</returns>
@@ -514,19 +314,20 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.DescribeObjects(describeObjectsRequest);
+                    Task<DescribeObjectsResponse> describeObjectsResponse = amazonDataPipelineClient.DescribeObjectsAsync(describeObjectsRequest);
+                    describeObjectsResponse.Wait();
+                    return describeObjectsResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
             {
                 throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
-                throw;
             }
         }
 
 
         /// <summary>
-        /// Gets the object definitions for objects found using the request.
+        /// Asynchronously gets the object definitions for objects found using the request.
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
         /// <param name="objectIds">The list of object Ids to find</param>
@@ -540,28 +341,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.DescribeObjects(describeObjectsRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
-                throw;
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously gets the object definitions for objects found using the request.
-        /// </summary>
-        /// <param name="describeObjectsRequest">The request detailing the objects associated with a pipeline to describe.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DescribeObjectsAsync(DescribeObjectsRequest describeObjectsRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<DescribeObjectsResponse> describeObjectsResponse = amazonDataPipelineClient.DescribeObjectsAsync(describeObjectsRequest);
                     describeObjectsResponse.Wait();
                     return describeObjectsResponse.Result;
@@ -575,34 +354,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Asynchronously gets the object definitions for objects found using the request.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
-        /// <param name="objectIds">The list of object Ids to find</param>
-        /// <param name="evaluateExpressions">Whether to evaluate any expressions on the objects</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DescribeObjectsAsync(string pipelineId, List<string> objectIds, [DefaultParameterValue(true)]bool evaluateExpressions)
-        {
-            try
-            {
-                DescribeObjectsRequest describeObjectsRequest = PopulateDescribeObjectsRequest(pipelineId, objectIds, evaluateExpressions);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<DescribeObjectsResponse> describeObjectsResponse = amazonDataPipelineClient.DescribeObjectsAsync(describeObjectsRequest);
-                    describeObjectsResponse.Wait();
-                    return describeObjectsResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to describe the requested objects on the pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Gets the details of one or more pipelines.
+        /// Asynchronously gets the details of one or more pipelines.
         /// </summary>
         /// <param name="describePipelinesRequest">The request object detailing the pipeline to describe.</param>
         /// <returns>The response returned from the server.</returns>
@@ -612,18 +364,21 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.DescribePipelines(describePipelinesRequest);
+                    Task<DescribePipelinesResponse> describePipelinesResponse = amazonDataPipelineClient.DescribePipelinesAsync(describePipelinesRequest);
+                    describePipelinesResponse.Wait();
+                    return describePipelinesResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
             {
+
                 throw new PipeBombException("Unable to describe the requested pipeline.", e);
             }
         }
 
 
         /// <summary>
-        /// Gets the details of one or more pipelines.
+        /// Asynchronously gets the details of one or more pipelines.
         /// </summary>
         /// <param name="pipelineIds">The Id of the pipeline to use in the request.</param>
         /// <returns>The response returned from the server.</returns>
@@ -635,27 +390,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.DescribePipelines(describePipelinesRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to describe the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously gets the details of one or more pipelines.
-        /// </summary>
-        /// <param name="describePipelinesRequest">The request object detailing the pipeline to describe.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DescribePipelinesAsync(DescribePipelinesRequest describePipelinesRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<DescribePipelinesResponse> describePipelinesResponse = amazonDataPipelineClient.DescribePipelinesAsync(describePipelinesRequest);
                     describePipelinesResponse.Wait();
                     return describePipelinesResponse.Result;
@@ -670,33 +404,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Asynchronously gets the details of one or more pipelines.
-        /// </summary>
-        /// <param name="pipelineIds">The Id of the pipeline to use in the request.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse DescribePipelinesAsync(List<string> pipelineIds)
-        {
-            try
-            {
-                DescribePipelinesRequest describePipelinesRequest = PopulateDescribePipelinesRequest(pipelineIds);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<DescribePipelinesResponse> describePipelinesResponse = amazonDataPipelineClient.DescribePipelinesAsync(describePipelinesRequest);
-                    describePipelinesResponse.Wait();
-                    return describePipelinesResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-
-                throw new PipeBombException("Unable to describe the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Evaluates a string in the context of the specified object.
+        /// Asynchronously gevaluates a string in the context of the specified object
         /// </summary>
         /// <param name="evaluateExpressionRequest">The request object detailing the expression to evaluate.</param>
         /// <returns>The response returned from the server.</returns>
@@ -706,7 +414,9 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.EvaluateExpression(evaluateExpressionRequest);
+                    Task<EvaluateExpressionResponse> evaluateExpressionResponse = amazonDataPipelineClient.EvaluateExpressionAsync(evaluateExpressionRequest);
+                    evaluateExpressionResponse.Wait();
+                    return evaluateExpressionResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
@@ -717,7 +427,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Evaluates a string in the context of the specified object.
+        /// Asynchronously gevaluates a string in the context of the specified object
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
         /// <param name="objectId">The Id of the object to use in the request.</param>
@@ -731,27 +441,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.EvaluateExpression(evaluateExpressionRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously gevaluates a string in the context of the specified object
-        /// </summary>
-        /// <param name="evaluateExpressionRequest">The request object detailing the expression to evaluate.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse EvaluateExpressionAsync(EvaluateExpressionRequest evaluateExpressionRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<EvaluateExpressionResponse> evaluateExpressionResponse = amazonDataPipelineClient.EvaluateExpressionAsync(evaluateExpressionRequest);
                     evaluateExpressionResponse.Wait();
                     return evaluateExpressionResponse.Result;
@@ -765,34 +454,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Asynchronously gevaluates a string in the context of the specified object
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
-        /// <param name="objectId">The Id of the object to use in the request.</param>
-        /// <param name="expression">The expression to evaluate</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse EvaluateExpressionAsync(string pipelineId, string objectId, string expression)
-        {
-            try
-            {
-                EvaluateExpressionRequest evaluateExpressionRequest = PopulateExpressionRequest(pipelineId, objectId, expression);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<EvaluateExpressionResponse> evaluateExpressionResponse = amazonDataPipelineClient.EvaluateExpressionAsync(evaluateExpressionRequest);
-                    evaluateExpressionResponse.Wait();
-                    return evaluateExpressionResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to evaluate the expression in the context of the specified object.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Gets the definition of the specified pipeline
+        /// Asynchronously gets the definition of the specified pipeline
         /// </summary>
         /// <param name="getPipelineDefinitionRequest">The request object detailing the pipeline to describe.</param>
         /// <returns>The response returned from the server.</returns>
@@ -802,18 +464,20 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.GetPipelineDefinition(getPipelineDefinitionRequest);
+                    Task<GetPipelineDefinitionResponse> getPipelineDefinitionResponse = amazonDataPipelineClient.GetPipelineDefinitionAsync(getPipelineDefinitionRequest);
+                    getPipelineDefinitionResponse.Wait();
+                    return getPipelineDefinitionResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline", e);
+                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline.", e);
             }
         }
 
 
         /// <summary>
-        /// Gets the definition of the specified pipeline
+        /// Asynchronously gets the definition of the specified pipeline
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
         /// <param name="version">The version of the pipeline to use</param>
@@ -826,27 +490,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.GetPipelineDefinition(getPipelineDefinitionRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously gets the definition of the specified pipeline
-        /// </summary>
-        /// <param name="getPipelineDefinitionRequest">The request object detailing the pipeline to describe.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse GetPipelineDefinitionAsync(GetPipelineDefinitionRequest getPipelineDefinitionRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<GetPipelineDefinitionResponse> getPipelineDefinitionResponse = amazonDataPipelineClient.GetPipelineDefinitionAsync(getPipelineDefinitionRequest);
                     getPipelineDefinitionResponse.Wait();
                     return getPipelineDefinitionResponse.Result;
@@ -855,53 +498,6 @@ namespace Liberator.AWSome.PipeBomb.Client
             catch (AmazonDataPipelineException e)
             {
                 throw new PipeBombException("Unable to retrieve the definition of the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously gets the definition of the specified pipeline
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline to use in the request.</param>
-        /// <param name="version">The version of the pipeline to use</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse GetPipelineDefinitionAsync(string pipelineId, string version)
-        {
-            try
-            {
-                GetPipelineDefinitionRequest getPipelineDefinitionRequest = PopulateGetPipelineDefinitionRequest(pipelineId, version);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<GetPipelineDefinitionResponse> getPipelineDefinitionResponse = amazonDataPipelineClient.GetPipelineDefinitionAsync(getPipelineDefinitionRequest);
-                    getPipelineDefinitionResponse.Wait();
-                    return getPipelineDefinitionResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to retrieve the definition of the requested pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Gets the pipeline identifiers for all pipelines that the user has access to.
-        /// </summary>
-        /// <param name="listPipelinesRequest">The request object.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse ListPipelines(ListPipelinesRequest listPipelinesRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.ListPipelines(listPipelinesRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to retrieve a list of pipelines.", e);
             }
         }
 
@@ -911,7 +507,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// </summary>
         /// <param name="listPipelinesRequest">The request object.</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse ListPipelinesAsync(ListPipelinesRequest listPipelinesRequest)
+        public AmazonWebServiceResponse ListPipelines(ListPipelinesRequest listPipelinesRequest)
         {
             try
             {
@@ -930,7 +526,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Adds tasks, schedules, and preconditions to the specified pipeline.
+        /// Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
         /// </summary>
         /// <param name="putPipelineDefinitionRequest">The pipeline definition request</param>
         /// <returns>The response returned from the server.</returns>
@@ -940,18 +536,20 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.PutPipelineDefinition(putPipelineDefinitionRequest);
+                    Task<PutPipelineDefinitionResponse> putPipelineDefinitionResponse = amazonDataPipelineClient.PutPipelineDefinitionAsync(putPipelineDefinitionRequest);
+                    putPipelineDefinitionResponse.Wait();
+                    return putPipelineDefinitionResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
             {
-                throw new PipeBombException("Unable to update the pipline definition.", e);
+                throw new PipeBombException("Unable to update the pipeline definition.", e);
             }
         }
 
 
         /// <summary>
-        /// Adds tasks, schedules, and preconditions to the specified pipeline.
+        /// Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline.</param>
         /// <param name="pipelineObjects">The objects that define the pipeline.</param>
@@ -967,27 +565,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.PutPipelineDefinition(putPipelineDefinitionRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to update the pipline definition.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
-        /// </summary>
-        /// <param name="putPipelineDefinitionRequest">The pipeline definition request</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse PutPipelineDefinitionAsync(PutPipelineDefinitionRequest putPipelineDefinitionRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<PutPipelineDefinitionResponse> putPipelineDefinitionResponse = amazonDataPipelineClient.PutPipelineDefinitionAsync(putPipelineDefinitionRequest);
                     putPipelineDefinitionResponse.Wait();
                     return putPipelineDefinitionResponse.Result;
@@ -996,82 +573,6 @@ namespace Liberator.AWSome.PipeBomb.Client
             catch (AmazonDataPipelineException e)
             {
                 throw new PipeBombException("Unable to update the pipeline definition.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline.</param>
-        /// <param name="pipelineObjects">The objects that define the pipeline.</param>
-        /// <param name="parameterObjects">The parameter objects used with the pipeline.</param>
-        /// <param name="parameterValues">The parameter values used with the pipeline.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse PutPipelineDefinitionAsync(string pipelineId, List<PipelineObject> pipelineObjects,
-            List<ParameterObject> parameterObjects, List<Amazon.DataPipeline.Model.ParameterValue> parameterValues)
-        {
-            try
-            {
-                PutPipelineDefinitionRequest putPipelineDefinitionRequest = PopulatePutPipelineDefinitionRequest(pipelineId, pipelineObjects, parameterObjects, parameterValues);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<PutPipelineDefinitionResponse> putPipelineDefinitionResponse = amazonDataPipelineClient.PutPipelineDefinitionAsync(putPipelineDefinitionRequest);
-                    putPipelineDefinitionResponse.Wait();
-                    return putPipelineDefinitionResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to update the pipeline definition.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Queries the specified pipeline for the names of objects that match the specified criteria.
-        /// </summary>
-        /// <param name="queryObjectsRequest">The request object detailing the parameters for the query.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse QueryObjects(QueryObjectsRequest queryObjectsRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.QueryObjects(queryObjectsRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to return query results.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Queries the specified pipeline for the names of objects that match the specified criteria.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline.</param>
-        /// <param name="sphere">Whether the query applies to components, instances or attempts</param>
-        /// <param name="query">The query that defines the objects to be returned</param>
-        /// <param name="limit">The maximum number of records to be returned</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse QueryObjects(string pipelineId, string sphere, Query query, int limit)
-        {
-            try
-            {
-                QueryObjectsRequest queryObjectsRequest = PopulateQueryObjectsRequest(pipelineId, sphere, query, limit);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.QueryObjects(queryObjectsRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to return query results.", e);
             }
         }
 
@@ -1081,7 +582,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// </summary>
         /// <param name="queryObjectsRequest">The request object detailing the parameters for the query.</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse QueryObjectsAsync(QueryObjectsRequest queryObjectsRequest)
+        public AmazonWebServiceResponse QueryObjects(QueryObjectsRequest queryObjectsRequest)
         {
             try
             {
@@ -1107,7 +608,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="query">The query that defines the objects to be returned</param>
         /// <param name="limit">The maximum number of records to be returned</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse QueryObjectsAsync(string pipelineId, string sphere, Query query, int limit)
+        public AmazonWebServiceResponse QueryObjects(string pipelineId, string sphere, Query query, int limit)
         {
             try
             {
@@ -1128,7 +629,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Removes existing tags from the specified pipeline.
+        /// Asynchronously removes existing tags from the specified pipeline.
         /// </summary>
         /// <param name="removeTagsRequest">The request object detailing the tags to remove.</param>
         /// <returns>The response returned from the server.</returns>
@@ -1138,7 +639,9 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.RemoveTags(removeTagsRequest);
+                    Task<RemoveTagsResponse> removeTagsResponse = amazonDataPipelineClient.RemoveTagsAsync(removeTagsRequest);
+                    removeTagsResponse.Wait();
+                    return removeTagsResponse.Result;
                 };
             }
             catch (AmazonDataPipelineException e)
@@ -1149,7 +652,7 @@ namespace Liberator.AWSome.PipeBomb.Client
 
 
         /// <summary>
-        /// Removes existing tags from the specified pipeline.
+        /// Asynchronously removes existing tags from the specified pipeline.
         /// </summary>
         /// <param name="pipelineId">The Id of the pipeline</param>
         /// <param name="tagKeys">The keys for the tags to be removed</param>
@@ -1162,27 +665,6 @@ namespace Liberator.AWSome.PipeBomb.Client
 
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.RemoveTags(removeTagsRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously removes existing tags from the specified pipeline.
-        /// </summary>
-        /// <param name="removeTagsRequest">The request object detailing the tags to remove.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse RemoveTagsAsync(RemoveTagsRequest removeTagsRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<RemoveTagsResponse> removeTagsResponse = amazonDataPipelineClient.RemoveTagsAsync(removeTagsRequest);
                     removeTagsResponse.Wait();
                     return removeTagsResponse.Result;
@@ -1191,78 +673,6 @@ namespace Liberator.AWSome.PipeBomb.Client
             catch (AmazonDataPipelineException e)
             {
                 throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Asynchronously removes existing tags from the specified pipeline.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline</param>
-        /// <param name="tagKeys">The keys for the tags to be removed</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse RemoveTagsAsync(string pipelineId, List<string> tagKeys)
-        {
-            try
-            {
-                RemoveTagsRequest removeTagsRequest = PopulateRemoveTagsRequest(pipelineId, tagKeys);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    Task<RemoveTagsResponse> removeTagsResponse = amazonDataPipelineClient.RemoveTagsAsync(removeTagsRequest);
-                    removeTagsResponse.Wait();
-                    return removeTagsResponse.Result;
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to remove the tags from the specified pipeline.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Requests that the status of a specified pipeline object is updated.
-        /// </summary>
-        /// <param name="setStatusRequest">The request detailing the updated status.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse SetStatus(SetStatusRequest setStatusRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.SetStatus(setStatusRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Requests that the status of a specified pipeline object is updated.
-        /// </summary>
-        /// <param name="pipelineId">The id of the pipeline that contains the objects</param>
-        /// <param name="objectIds">The Id of the objects whose status is to change</param>
-        /// <param name="status">The status to be used for the objects</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse SetStatus(string pipelineId, List<string> objectIds, string status)
-        {
-            SetStatusRequest setStatusRequest = PopulateStatusRequest(pipelineId, objectIds, status);
-
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.SetStatus(setStatusRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to set the status of the pipeline object.", e);
             }
         }
 
@@ -1272,7 +682,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// </summary>
         /// <param name="setStatusRequest">The request detailing the updated status.</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse SetStatusAsync(SetStatusRequest setStatusRequest)
+        public AmazonWebServiceResponse SetStatus(SetStatusRequest setStatusRequest)
         {
             try
             {
@@ -1297,7 +707,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="objectIds">The Id of the objects whose status is to change</param>
         /// <param name="status">The status to be used for the objects</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse SetStatusAsync(string pipelineId, List<string> objectIds, string status)
+        public AmazonWebServiceResponse SetStatus(string pipelineId, List<string> objectIds, string status)
         {
             try
             {
@@ -1328,54 +738,6 @@ namespace Liberator.AWSome.PipeBomb.Client
             {
                 using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
                 {
-                    return amazonDataPipelineClient.ValidatePipelineDefinition(validatePipelineDefinitionRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to validate the pipeline definition.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Validates the specified Pipeline definition.
-        /// </summary>
-        /// <param name="pipelineId">The Id of the pipeline.</param>
-        /// <param name="pipelineObjects">The objects that define the pipeline.</param>
-        /// <param name="parameterObjects">The parameter objects used with the pipeline.</param>
-        /// <param name="parameterValues">The parameter values used with the pipeline.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse ValidatePipelineDefinition(string pipelineId, List<PipelineObject> pipelineObjects,
-            List<ParameterObject> parameterObjects, List<Amazon.DataPipeline.Model.ParameterValue> parameterValues)
-        {
-            try
-            {
-                ValidatePipelineDefinitionRequest validatePipelineDefinitionRequest = PopulateValidatePipelineDefinitionRequest(pipelineId, pipelineObjects, parameterObjects, parameterValues);
-
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
-                    return amazonDataPipelineClient.ValidatePipelineDefinition(validatePipelineDefinitionRequest);
-                };
-            }
-            catch (AmazonDataPipelineException e)
-            {
-                throw new PipeBombException("Unable to validate the pipeline definition.", e);
-            }
-        }
-
-
-        /// <summary>
-        /// Validates the specified Pipeline definition.
-        /// </summary>
-        /// <param name="validatePipelineDefinitionRequest">The request detailing the pipeline definition to be validated.</param>
-        /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse ValidatePipelineDefinitionAsync(ValidatePipelineDefinitionRequest validatePipelineDefinitionRequest)
-        {
-            try
-            {
-                using (AmazonDataPipelineClient amazonDataPipelineClient = Preferences.GetPipelineClient())
-                {
                     Task<ValidatePipelineDefinitionResponse> validatePipelineDefinitionResponse = amazonDataPipelineClient.ValidatePipelineDefinitionAsync(validatePipelineDefinitionRequest);
                     validatePipelineDefinitionResponse.Wait();
                     return validatePipelineDefinitionResponse.Result;
@@ -1396,7 +758,7 @@ namespace Liberator.AWSome.PipeBomb.Client
         /// <param name="parameterObjects">The parameter objects used with the pipeline.</param>
         /// <param name="parameterValues">The parameter values used with the pipeline.</param>
         /// <returns>The response returned from the server.</returns>
-        public AmazonWebServiceResponse ValidatePipelineDefinitionAsync(string pipelineId, List<PipelineObject> pipelineObjects,
+        public AmazonWebServiceResponse ValidatePipelineDefinition(string pipelineId, List<PipelineObject> pipelineObjects,
             List<ParameterObject> parameterObjects, List<Amazon.DataPipeline.Model.ParameterValue> parameterValues)
         {
             try
@@ -1672,7 +1034,9 @@ namespace Liberator.AWSome.PipeBomb.Client
                 Sphere = "INSTANCE"
             };
 
-            QueryObjectsResponse queryObjectsResponse = amazonDataPipelineClient.QueryObjects(queryObjectsRequest);
+            Task<QueryObjectsResponse> queryTask = amazonDataPipelineClient.QueryObjectsAsync(queryObjectsRequest);
+            queryTask.Wait();
+            QueryObjectsResponse queryObjectsResponse = queryTask.Result;
 
             var taskId = queryObjectsResponse.Ids[0];
 
@@ -1681,7 +1045,9 @@ namespace Liberator.AWSome.PipeBomb.Client
                 TaskId = taskId
             };
 
-            ReportTaskProgressResponse reportTaskProgressResponse = amazonDataPipelineClient.ReportTaskProgress(reportTaskProgressRequest);
+            Task<ReportTaskProgressResponse> reportTask = amazonDataPipelineClient.ReportTaskProgressAsync(reportTaskProgressRequest);
+            reportTask.Wait();
+            ReportTaskProgressResponse reportTaskProgressResponse = reportTask.Result;
 
             while (DateTime.Now <= dateTime.AddMinutes(PipelineMaxTime))
             {

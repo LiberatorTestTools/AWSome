@@ -4,6 +4,7 @@ using Liberator.AWSome.Dynamite.Config;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Liberator.AWSome.Dynamite.Client
 {
@@ -71,7 +72,9 @@ namespace Liberator.AWSome.Dynamite.Client
                     TableName = tableName
                 };
 
-                CreateTableResponse createTableResponse = client.CreateTable(createTableRequest);
+                Task<CreateTableResponse> task = client.CreateTableAsync(createTableRequest);
+                task.Wait();
+                CreateTableResponse createTableResponse = task.Result;
                 TableStatus tableStatus = GetTableStatus(createTableResponse);
 
                 Debug.WriteLine(string.Format(createTableMessage, tableName, tableStatus));
@@ -101,7 +104,8 @@ namespace Liberator.AWSome.Dynamite.Client
                     ProvisionedThroughput = new ProvisionedThroughput() { ReadCapacityUnits = 2, WriteCapacityUnits = 2 }
                 };
 
-                UpdateTableResponse updateTableResponse = client.UpdateTable(updateTableRequest);
+                Task<UpdateTableResponse> updateTableResponse = client.UpdateTableAsync(updateTableRequest);
+                updateTableResponse.Wait();
             }
         }
 
@@ -114,7 +118,8 @@ namespace Liberator.AWSome.Dynamite.Client
             using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
                 DeleteTableRequest deleteTableRequest = new DeleteTableRequest(tableName);
-                DeleteTableResponse deleteTableResponse = client.DeleteTable(deleteTableRequest);
+                Task<DeleteTableResponse> response = client.DeleteTableAsync(deleteTableRequest);
+                response.Wait();
             }
         }
 
@@ -127,7 +132,9 @@ namespace Liberator.AWSome.Dynamite.Client
         {
             using (IAmazonDynamoDB client = Preferences.GetDynamoDbClient())
             {
-                ListTablesResponse listTablesResponse = client.ListTables();
+                Task<ListTablesResponse> response = client.ListTablesAsync();
+                response.Wait();
+                ListTablesResponse listTablesResponse = response.Result;
                 return listTablesResponse.TableNames;
             }
         }
@@ -143,7 +150,10 @@ namespace Liberator.AWSome.Dynamite.Client
                 foreach (string table in tables)
                 {
                     DescribeTableRequest describeTableRequest = new DescribeTableRequest(table);
-                    DescribeTableResponse describeTableResponse = client.DescribeTable(describeTableRequest);
+
+                    Task<DescribeTableResponse> response = client.DescribeTableAsync(describeTableRequest);
+                    response.Wait();
+                    DescribeTableResponse describeTableResponse = response.Result;
                     TableDescription tableDescription = describeTableResponse.Table;
                     Debug.WriteLine(string.Format("Printing information about table {0}:", tableDescription.TableName));
                     Debug.WriteLine(string.Format("Created at: {0}", tableDescription.CreationDateTime));

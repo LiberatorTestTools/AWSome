@@ -25,7 +25,9 @@ namespace Liberator.AWSome.Chatter.Transactions
                 StreamName = Preferences.KinesisStreamName
             };
 
-            DescribeStreamResponse describeResponse = kinesisClient.DescribeStream(describeRequest);
+            Task<DescribeStreamResponse> describeStreamResponse = kinesisClient.DescribeStreamAsync(describeRequest);
+            describeStreamResponse.Wait();
+            DescribeStreamResponse describeResponse = describeStreamResponse.Result;
 
             return GetRecords(kinesisClient, describeResponse, fromDateTime);
         }
@@ -65,7 +67,9 @@ namespace Liberator.AWSome.Chatter.Transactions
         /// <param name="shardIteratorRequest"></param>
         private static List<Record> PopulateRecordsFromShards(AmazonKinesisClient kinesisClient, GetShardIteratorRequest shardIteratorRequest)
         {
-            GetShardIteratorResponse iteratorResponse = kinesisClient.GetShardIterator(shardIteratorRequest);
+            Task<GetShardIteratorResponse> getShardIteratorResponse = kinesisClient.GetShardIteratorAsync(shardIteratorRequest);
+            getShardIteratorResponse.Wait();
+            GetShardIteratorResponse iteratorResponse = getShardIteratorResponse.Result;
             string iteratorId = iteratorResponse.ShardIterator;
             List<Record> records = new List<Record>();
 

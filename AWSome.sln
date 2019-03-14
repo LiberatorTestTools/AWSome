@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Bucket", "AWSome.Bucket\AWSome.Bucket.csproj", "{FAFCCA5F-BAA0-4EC1-A289-CC887AAF7BE6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Tests", "AWSome.Tests\AWSome.Tests.csproj", "{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSome.Bucket", "AWSome.Bucket\AWSome.Bucket.csproj", "{FAFCCA5F-BAA0-4EC1-A289-CC887AAF7BE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.PipeBomb", "AWSome.PipeBomb\AWSome.PipeBomb.csproj", "{94B4AF52-F182-4D25-8A15-83E744029957}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Dynamite", "AWSome.Dynamite\AWSome.Dynamite.csproj", "{F921BFC2-C7A9-4315-BB45-B6AFD46B5053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.Chatter", "AWSome.Chatter\AWSome.Chatter.csproj", "{18A09CB2-CD64-4042-8F61-73D45A84A9C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSome.Chatter", "AWSome.Chatter\AWSome.Chatter.csproj", "{18A09CB2-CD64-4042-8F61-73D45A84A9C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSome.ECStraordinary", "AWSome.ECStraordinary\AWSome.ECStraordinary.csproj", "{6E9ED622-7C04-4595-9BA0-A44A180EC4A1}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{FAFCCA5F-BAA0-4EC1-A289-CC887AAF7BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAFCCA5F-BAA0-4EC1-A289-CC887AAF7BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAFCCA5F-BAA0-4EC1-A289-CC887AAF7BE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46CE5B7E-4D05-4D9F-8852-513B2C09E2B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94B4AF52-F182-4D25-8A15-83E744029957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94B4AF52-F182-4D25-8A15-83E744029957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94B4AF52-F182-4D25-8A15-83E744029957}.Release|Any CPU.ActiveCfg = Release|Any CPU

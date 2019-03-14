@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liberator.AWSome.PipeBomb</name>
+    </assembly>
+    <members>
+        <member name="T:Liberator.AWSome.PipeBomb.Client.DataPipeline">
+            <summary>
+            The client class for handling Amazon Data Pipelines
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.PipelineClient">
+            <summary>
+            The Amazon Data Pipeline Client being used within the client
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.UserAWSCredentials">
+            <summary>
+            The credentials being used for communication with the server
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.PipelineConfig">
+            <summary>
+            The Data Pipeline configuration to use when communicating with the server
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.PipelinePollingDelay">
+            <summary>
+            The delay between polling events
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.PipelineMaxTime">
+            <summary>
+            The maximum time to keep the connection to the pipeline open
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Client.DataPipeline.PipelineId">
+            <summary>
+            The Id for the pipeline being used
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.#ctor">
+            <summary>
+            Parameterless constructor for the Data Pipeline client
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.#ctor(Amazon.DataPipeline.AmazonDataPipelineConfig)">
+            <summary>
+            Creates a new Data Pipeline with specific configuration parameters.
+            </summary>
+            <param name="pipelineConfig">The configuration settings for the Pipeline</param>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.#ctor(Amazon.DataPipeline.AmazonDataPipelineConfig,System.String)">
+            <summary>
+            Creates a new Data Pipeline with a given name and specific configuration parameters.
+            </summary>
+            <param name="pipelineConfig">The configuration settings for the Pipeline</param>
+            <param name="pipelineId">The Id of the pipeline used in the client</param>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.ActivatePipeline(Amazon.DataPipeline.Model.ActivatePipelineRequest,System.Collections.Generic.List{Amazon.DataPipeline.Model.Tag})">
+            <summary>
+            Asynchronously activates a data pipeline
+            </summary>
+            <param name="activatePipelineRequest">The request object detailing the pipeline to activate</param>
+            <param name="tags">[Optional] Any tags to add to the pipeline</param>
+            <returns>The response returned from the server</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.ActivatePipeline(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.Tag},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Asynchronously activates a data pipeline
+            </summary>
+            <param name="pipelineId"></param>
+            <param name="tags">[Optional] Any tags to add to the pipeline</param>
+            <param name="parameterValues">[Optional] Parameters to pass to the pipeline on activation</param>
+            <returns>The response returned from the server</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.CreatePipeline(Amazon.DataPipeline.Model.CreatePipelineRequest,System.Collections.Generic.List{Amazon.DataPipeline.Model.Tag})">
+            <summary>
+            Asynchronously creates a data pipeline
+            </summary>
+            <param name="createPipelineRequest">The request object detailing the pipeline to create</param>
+            <param name="tags">Any tags to add to the pipeline</param>
+            <returns>The response returned from the server</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.CreatePipeline(System.String,System.String,System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.Tag})">
+            <summary>
+            Asynchronously creates a data pipeline
+            </summary>
+            <param name="uniqueId">Unique identifier set by the user</param>
+            <param name="name">The name of the pipeline</param>
+            <param name="description">A description of the pipeline</param>
+            <param name="tags">[Optional] Any tags to add to the pipeline</param>
+            <returns></returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DeactivatePipeline(Amazon.DataPipeline.Model.DeactivatePipelineRequest)">
+            <summary>
+            Asynchronously deactivates a data pipeline
+            </summary>
+            <param name="deactivatePipelineRequest">The request object detailing the pipeline to deactivate</param>
+            <returns>The response returned from the server</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DeactivatePipeline(System.String,System.Boolean)">
+            <summary>
+            Asynchronously deactivates a data pipeline
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to be used</param>
+            <param name="cancelActive">Whether to cancel any currently running objects</param>
+            <returns>The response returned from the server</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DeletePipeline(Amazon.DataPipeline.Model.DeletePipelineRequest)">
+            <summary>
+            Asynchronously deletes a data pipeline.
+            </summary>
+            <param name="deletePipelineRequest">The request object detailing the pipeline to delete.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DeletePipeline(System.String)">
+            <summary>
+            Asynchronously deletes a data pipeline.
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to delete.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DescribeObjects(Amazon.DataPipeline.Model.DescribeObjectsRequest)">
+            <summary>
+            Asynchronously gets the object definitions for objects found using the request.
+            </summary>
+            <param name="describeObjectsRequest">The request detailing the objects associated with a pipeline to describe.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DescribeObjects(System.String,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Asynchronously gets the object definitions for objects found using the request.
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to use in the request.</param>
+            <param name="objectIds">The list of object Ids to find</param>
+            <param name="evaluateExpressions">Whether to evaluate any expressions on the objects</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DescribePipelines(Amazon.DataPipeline.Model.DescribePipelinesRequest)">
+            <summary>
+            Asynchronously gets the details of one or more pipelines.
+            </summary>
+            <param name="describePipelinesRequest">The request object detailing the pipeline to describe.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.DescribePipelines(System.Collections.Generic.List{System.String})">
+            <summary>
+            Asynchronously gets the details of one or more pipelines.
+            </summary>
+            <param name="pipelineIds">The Id of the pipeline to use in the request.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.EvaluateExpression(Amazon.DataPipeline.Model.EvaluateExpressionRequest)">
+            <summary>
+            Asynchronously gevaluates a string in the context of the specified object
+            </summary>
+            <param name="evaluateExpressionRequest">The request object detailing the expression to evaluate.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.EvaluateExpression(System.String,System.String,System.String)">
+            <summary>
+            Asynchronously gevaluates a string in the context of the specified object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to use in the request.</param>
+            <param name="objectId">The Id of the object to use in the request.</param>
+            <param name="expression">The expression to evaluate</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.GetPipelineDefinition(Amazon.DataPipeline.Model.GetPipelineDefinitionRequest)">
+            <summary>
+            Asynchronously gets the definition of the specified pipeline
+            </summary>
+            <param name="getPipelineDefinitionRequest">The request object detailing the pipeline to describe.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.GetPipelineDefinition(System.String,System.String)">
+            <summary>
+            Asynchronously gets the definition of the specified pipeline
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to use in the request.</param>
+            <param name="version">The version of the pipeline to use</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.ListPipelines(Amazon.DataPipeline.Model.ListPipelinesRequest)">
+            <summary>
+            Asynchronously gets the pipeline identifiers for all pipelines that the user has access to.
+            </summary>
+            <param name="listPipelinesRequest">The request object.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PutPipelineDefinition(Amazon.DataPipeline.Model.PutPipelineDefinitionRequest)">
+            <summary>
+            Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
+            </summary>
+            <param name="putPipelineDefinitionRequest">The pipeline definition request</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PutPipelineDefinition(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.PipelineObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Asynchronously adds tasks, schedules, and preconditions to the specified pipeline.
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="pipelineObjects">The objects that define the pipeline.</param>
+            <param name="parameterObjects">The parameter objects used with the pipeline.</param>
+            <param name="parameterValues">The parameter values used with the pipeline.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.QueryObjects(Amazon.DataPipeline.Model.QueryObjectsRequest)">
+            <summary>
+            Asynchronously queries the specified pipeline for the names of objects that match the specified criteria.
+            </summary>
+            <param name="queryObjectsRequest">The request object detailing the parameters for the query.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.QueryObjects(System.String,System.String,Amazon.DataPipeline.Model.Query,System.Int32)">
+            <summary>
+            Asynchronously queries the specified pipeline for the names of objects that match the specified criteria
+            </summary>
+            <param name="pipelineId">The Id of the pipeline</param>
+            <param name="sphere">Whether the query applies to components, instances or attempts</param>
+            <param name="query">The query that defines the objects to be returned</param>
+            <param name="limit">The maximum number of records to be returned</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.RemoveTags(Amazon.DataPipeline.Model.RemoveTagsRequest)">
+            <summary>
+            Asynchronously removes existing tags from the specified pipeline.
+            </summary>
+            <param name="removeTagsRequest">The request object detailing the tags to remove.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.RemoveTags(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Asynchronously removes existing tags from the specified pipeline.
+            </summary>
+            <param name="pipelineId">The Id of the pipeline</param>
+            <param name="tagKeys">The keys for the tags to be removed</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.SetStatus(Amazon.DataPipeline.Model.SetStatusRequest)">
+            <summary>
+            Asynchronously requests that the status of a specified pipeline object is updated.
+            </summary>
+            <param name="setStatusRequest">The request detailing the updated status.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.SetStatus(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Asynchronously requests that the status of a specified pipeline object is updated.
+            </summary>
+            <param name="pipelineId">The id of the pipeline that contains the objects</param>
+            <param name="objectIds">The Id of the objects whose status is to change</param>
+            <param name="status">The status to be used for the objects</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.ValidatePipelineDefinition(Amazon.DataPipeline.Model.ValidatePipelineDefinitionRequest)">
+            <summary>
+            Validates the specified Pipeline definition.
+            </summary>
+            <param name="validatePipelineDefinitionRequest">The request detailing the pipeline definition to be validated.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.ValidatePipelineDefinition(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.PipelineObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Validates the specified Pipeline definition.
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="pipelineObjects">The objects that define the pipeline.</param>
+            <param name="parameterObjects">The parameter objects used with the pipeline.</param>
+            <param name="parameterValues">The parameter values used with the pipeline.</param>
+            <returns>The response returned from the server.</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateActivateRequest(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Creates and populates an ActivatePipelineRequest
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to be used</param>
+            <param name="parameterValues">Parameters to pass to the pipeline on activation</param>
+            <returns>A request to be used when activating data pipelines</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateCreateRequest(System.String,System.String,System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.Tag})">
+            <summary>
+            Creates and populates a CreatePipelineRequest
+            </summary>
+            <param name="uniqueId">Unique identifier set by the user</param>
+            <param name="name">The name of the pipeline</param>
+            <param name="description">A description of the pipeline</param>
+            <param name="tags">[Optional] Any tags to add to the pipeline</param>
+            <returns>A request to be used when creating data pipelines</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateDeactivateRequest(System.String,System.Boolean)">
+            <summary>
+            Creates and populates a DeactivatePipelineRequest
+            </summary>
+            <param name="pipelineId">The Id of the pipeline to be used</param>
+            <param name="cancelActive">Whether to cancel any currently running objects</param>
+            <returns>A request to be used when deactivating data pipelines</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateDeleteRequest(System.String)">
+            <summary>
+            Creates and populates a DeletePipelineRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <returns>A request to be used when deleting data pipelines</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateDescribeObjectsRequest(System.String,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Creates and populates a DescribeObjectsRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="objectIds">The Id of the object.</param>
+            <param name="evaluateExpressions">Whether any expressions in the object should be evaluated</param>
+            <returns>A request to be used when retrieving metadata about one or more pipline objects</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateDescribePipelinesRequest(System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates and populates a DescribePipelinesRequest object
+            </summary>
+            <param name="pipelineIds">The Ids of the pipelines whose definitions are required.</param>
+            <returns>A request to be used when retrieving metadata about one or more piplines</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateExpressionRequest(System.String,System.String,System.String)">
+            <summary>
+            Creates and populates a EvaluateExpressionRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="objectId">The Id of the object.</param>
+            <param name="expression">The expression to evaluate</param>
+            <returns>A request to be used when evaluating strings in the context of an object</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateGetPipelineDefinitionRequest(System.String,System.String)">
+            <summary>
+            Creates and populates a GetPipelineDefinitionRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="version">The version of the pipeline definition</param>
+            <returns>A request to be used when getting pipeline definitions</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulatePutPipelineDefinitionRequest(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.PipelineObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Creates and populates a PutPipelineDefinitionRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="pipelineObjects">The objects that define the pipeline.</param>
+            <param name="parameterObjects">The parameter objects used with the pipeline.</param>
+            <param name="parameterValues">The parameter values used with the pipeline.</param>
+            <returns>A request to be used when sending definitions to the pipeline</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateQueryObjectsRequest(System.String,System.String,Amazon.DataPipeline.Model.Query,System.Int32)">
+            <summary>
+            Creates and populates a QueryObjectsRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline</param>
+            <param name="sphere">Whether the query applies to components, instances or attempts</param>
+            <param name="query">The query that defines the objects to be returned</param>
+            <param name="limit">The maximum number of records to be returned</param>
+            <returns>A request to be used when querying objects on a pipeline</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateRemoveTagsRequest(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates and populates a RemoveTagsRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline</param>
+            <param name="tagKeys">The keys of the tags to remove</param>
+            <returns>A request to be used when removing tags from a pipeline</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateStatusRequest(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Creates and populates a SetStatusRequest object
+            </summary>
+            <param name="pipelineId">The id of the pipeline that contains the objects</param>
+            <param name="objectIds">The Id of the objects whose status is to change</param>
+            <param name="status">The status to be used for the objects</param>
+            <returns>A request to be used when setting status requests to pipeline objects</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.PopulateValidatePipelineDefinitionRequest(System.String,System.Collections.Generic.List{Amazon.DataPipeline.Model.PipelineObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterObject},System.Collections.Generic.List{Amazon.DataPipeline.Model.ParameterValue})">
+            <summary>
+            Creates and populates a ValidatePipelineDefinitionRequest object
+            </summary>
+            <param name="pipelineId">The Id of the pipeline.</param>
+            <param name="pipelineObjects">The objects that define the pipeline.</param>
+            <param name="parameterObjects">The parameter objects used with the pipeline.</param>
+            <param name="parameterValues">The parameter values used with the pipeline.</param>
+            <returns>A request to be used when validating pata pipeline definitions</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Client.DataPipeline.WaitForActivation(Amazon.DataPipeline.AmazonDataPipelineClient,System.Threading.Tasks.Task{Amazon.Runtime.AmazonWebServiceResponse})">
+            <summary>
+            Currently experimental - polling the data pipeline for tasks is apparently non-trivial.
+            </summary>
+            <param name="amazonDataPipelineClient">The pipeline client being used for the connection.</param>
+            <param name="activatePipelineResponse">The response from the server.</param>
+            <returns>The completed activation task.</returns>
+        </member>
+        <member name="T:Liberator.AWSome.PipeBomb.Config.PipeBombException">
+            <summary>
+            An AWSome pipe bomb has exploded
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Config.PipeBombException.#ctor(System.String,Amazon.DataPipeline.AmazonDataPipelineException)">
+            <summary>
+            PipeBomb has blown up.
+            </summary>
+            <param name="message">What was shouted when PipeBomb exploded.</param>
+            <param name="exception">The exception that caused PipeBomb to blow up.</param>
+        </member>
+        <member name="T:Liberator.AWSome.PipeBomb.Config.Preferences">
+            <summary>
+            Preferences for AWSome PipeBomb
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.AWSProfileName">
+            <summary>
+            The profile name to use
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.RegionEndpoint">
+            <summary>
+            The Region Endpoint for the pipeline
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.UserAWSCredentials">
+            <summary>
+            The AWS Credentials for the test account
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.PipelineConfig">
+            <summary>
+            The configuration for the data pipeline
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.PipelineId">
+            <summary>
+            The Id of the pipeline
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.PipelinePollingDelay">
+            <summary>
+            The polling delay for the pipeline
+            </summary>
+        </member>
+        <member name="P:Liberator.AWSome.PipeBomb.Config.Preferences.PipelineMaxTime">
+            <summary>
+            The maximum time to hold the pipeline open
+            </summary>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Config.Preferences.GetPipelineClient">
+            <summary>
+            Gets the Pipeline Client set in the App.config file
+            </summary>
+            <returns>The Pipeline Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Config.Preferences.GetPipelineClient(Amazon.RegionEndpoint)">
+            <summary>
+            Gets the Pipeline Client set in the App.config file
+            </summary>
+            <param name="regionEndpoint">The region endpoint for the pipeline</param>
+            <returns>The Pipeline Client as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Config.Preferences.GetPipelineClient(Amazon.DataPipeline.AmazonDataPipelineConfig)">
+            <summary>
+            Gets the Pipeline Client set in the App.config file
+            </summary>
+            <param name="amazonDataPipelineConfig"></param>
+            <returns>The Kinesis Pipeline as configured</returns>
+        </member>
+        <member name="M:Liberator.AWSome.PipeBomb.Config.Preferences.GetAWSCredentials">
+            <summary>
+            Gets the user's AWS Credentials from their Credential Profile Store Chain
+            </summary>
+            <returns>The AWS Credentials</returns>
+        </member>
+    </members>
+</doc>
